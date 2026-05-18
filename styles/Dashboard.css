@@ -1,0 +1,6 @@
+.table_cont {
+    width: 70vw;
+    margin-left: 0;   /* forces left */
+    /* margin-right: auto; */
+    background-color: beige;
+}

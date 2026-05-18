@@ -10,56 +10,54 @@
 </head>
 
 <body>
+<!-- <nav class="navbar d-flex justify-content-between">
+  <div class="navbar-brand px-3">Todo</div>
+  <div class="navbar-nav">
+    <div class="nav-items"> hi</div>
+    <div class="nav-items"> hi</div>
+    <div class="nav-items"> hi</div>
+  </div>
+</nav> -->
 
-<!-- NAVBAR START -->
-<nav class="navbar navbar-expand-lg navbar-cont ">
 
-  <!-- Brand -->
-  <a class="navbar-brand ms-3" href="#">MyWebsite</a>
-  <!-- <a class="nav-item" href="#">Home</a> -->
-
-  <!-- Toggler -->
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <!-- Collapsible Menu -->
-  <div class="collapse navbar-collapse" id="navbarNav">
-
-    <ul class="navbar-nav me-auto me-3">
-
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Home</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="#">Services</a>
-      </li>
-
-      <li class="nav-item">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand px-3" href="#">TODO</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNavAltMarkup">
+      <div class="navbar-nav gap-3">
+        <a class="nav-link active" aria-current="page" href="#">About</a>
+        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">Blog</a>
         <a class="nav-link" href="#">Contact</a>
-      </li>
-
-    </ul>
-
-    <ul class="navbar-nav ms-auto me-3 gap-3">
-        <li class="nav-items">
-            <button class="btn btn-light" type="button"><a href="login.html" class="text-decoration-none">Login</a></button>
-        </li>
-        <li class="nav-items">
-            <button class="btn btn-light" type="button"><a href="signup.html" class="text-decoration-none">Get Started</a></button>
-        </li>
-    </ul>
-
+        <!-- <a class="nav-link disabled" aria-disabled="true">Disabled</a> -->
+      </div>
+    </div>
+    <div class="registration_btns d-flex gap-3  px-3">
+      <a href="/pages/login.html" class="loginBtn text-decoration-none text-black">Login</a>
+      <a href="/pages/signup.html" class="signupBtn text-decoration-none text-black">Sign Up</a>
+      <!-- <button class="btn" type="button"> Login </button>
+      <button class="btn" type="button"> Sign Up </button> -->
+    </div>
   </div>
 </nav>
-<!-- NAVBAR END -->
 
-<!-- Bootstrap JS (IMPORTANT for toggler to work) -->
+<div class="container text-center">
+  <div class="HeroText">
+    <p class="fs-1 fst-italic">Increase productivity by using our TODO website</p>
+  </div>
+  <div class="HeroDescription">
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque excepturi, assumenda eos aliquid veniam ipsa nisi sint. Recusandae, a ratione possimus nulla sint odio officiis vero sequi maiores aut. Nisi!
+  </div>
+</div>
+
+<div class="AboutUs my-5">
+  <h4 class="text-center">About Us</h4>
+  <p class="fs-3 px-5  text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ex quos eligendi, minus quidem dignissimos assumenda quo, illum laboriosam, sed libero? Debitis harum asperiores explicabo reiciendis mollitia cum. Repellat, error.</p>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
