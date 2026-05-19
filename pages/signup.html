@@ -15,6 +15,16 @@
         <h2 class="text-primary text-center">Sign Up</h2>
             <input type="text" placeholder="First Name" id="fname" class="form-control">
             <input type="text" placeholder="Last Name" id="lname" class="form-control">
+            <input type="text" placeholder="Date Of Birth" id="date" class="form-control" onfocus="this.type='date'" onblur="if(!this.value)this.type='text'">
+            <input type="number" placeholder="Enter Age" id="age" class="form-control">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="male">
+                <label class="form-check-label" for="male">Male </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="female">
+                <label class="form-check-label" for="female">Female </label>
+            </div>
             <input type="email" placeholder="Email ID" id="email" class="form-control">
             <input type="text" placeholder="Username" id="usrname" class="form-control">
             <input type="password" placeholder="Password" id="pwd" class="form-control">
