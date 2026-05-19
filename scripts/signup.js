@@ -67,6 +67,7 @@ $('#signupBtn').click(async function () {
         await fetch(`${API}/users`)
     const users =
         await response.json()
+        
     const existingUser =
         users.find(user =>
             user.username === username

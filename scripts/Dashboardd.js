@@ -1,282 +1,191 @@
 const API = 'http://localhost:5000'
 
-console.log(localStorage.getItem('loggedInUser'));
-// console.log("run");
-
-
-
 const loggedInUser =
-    JSON.parse(
-        localStorage.getItem('loggedInUser')
-    )
+    JSON.parse(localStorage.getItem('loggedInUser'))
 
 if (!loggedInUser) {
-
     window.location.href = 'login.html'
-
 }
 
 let editingId = null
 let allTasks = []
 
-$('.navbar-brand').text(
-    loggedInUser.username
-)
+$('.navbar-brand').text(loggedInUser.username)
 
+
+// -------------------- ADD / UPDATE TASK --------------------
 async function addTask() {
 
-    const taskName =
-        $('#taskNameInput').val()
+    try {
 
-    const taskDesc =
-        $('#taskDescInput').val()
+        const taskData = {
+            taskName: $('#taskNameInput').val(),
+            taskDesc: $('#taskDescInput').val(),
+            startDate: $('#taskStartInput').val(),
+            dueDate: $('#taskDueInput').val(),
+            status: $('#status').val(),
+            userId: loggedInUser.id
+        }
 
-    const startDate =
-        $('#taskStartInput').val()
+        if (editingId) {
 
-    const dueDate =
-        $('#taskDueInput').val()
+            await fetch(`${API}/tasks/${editingId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(taskData)
+            })
 
-    const status =
-        $('#status').val()
+            editingId = null
 
-    const taskData = {
+        } else {
 
-        taskName,
-        taskDesc,
-        startDate,
-        dueDate,
-        status,
-        // isDeleted=false,
+            await fetch(`${API}/tasks`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(taskData)
+            })
+        }
 
-        userId: loggedInUser.id
+        clearInputs()
+        getTasks()
 
+        // SAFE MODAL CLOSE
+        const modalElement = document.getElementById('addTaskModal')
+        const modal = bootstrap.Modal.getOrCreateInstance(modalElement)
+        modal.hide()
+
+    } catch (error) {
+        console.log(error)
     }
-
-    if (editingId) {
-
-        await fetch(`${API}/tasks/${editingId}`, {
-
-            method: "PUT",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify(taskData)
-
-        })
-
-        editingId = null
-
-    } else {
-
-        await fetch(`${API}/tasks`, {
-
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify(taskData)
-
-        })
-
-    }
-
-    clearInputs()
-
-    getTasks()
-
-    const modal = bootstrap.Modal.getInstance(
-        document.getElementById('addTaskModal')
-    )
-
-    modal.hide()
 }
 
+
+// -------------------- GET TASKS --------------------
 async function getTasks() {
-    // const activeTasks = tasks.filter(task => !task.isDeleted)
-    const response = await fetch(`${API}/tasks`)
 
-    const data = await response.json()
+    try {
 
-    allTasks = data.filter(task =>
-        task.userId == loggedInUser.id
-    )
+        const response = await fetch(`${API}/tasks`)
+        const data = await response.json()
 
-    renderTasks(allTasks)
+        allTasks = data.filter(task =>
+            task.userId == loggedInUser.id
+        )
+
+        renderTasks(allTasks)
+
+    } catch (error) {
+        console.log(error)
+    }
 }
 
+
+// -------------------- RENDER --------------------
 function renderTasks(tasks) {
 
-    $('.right-cont').empty()
+    $('.left-cont').empty()
 
     tasks.forEach(task => {
 
-        $('.right-cont').append(`
+        $('.left-cont').append(`
 
-            <div class="card p-4 mt-3 shadow">
+            <div class="card p-3 my-4 shadow" style=" width:300px; height:250px">
 
-                <h3>${task.taskName}</h3>
-
+                <h5>${task.taskName}</h5>
                 <p>${task.taskDesc}</p>
 
-                <p>
-                    <b>Start:</b>
-                    ${task.startDate}
-                </p>
+                <p><b>Start:</b> ${task.startDate}</p>
+                <p><b>Due:</b> ${task.dueDate}</p>
+                <p><b>Status:</b> ${task.status}</p>
 
-                <p>
-                    <b>Due:</b>
-                    ${task.dueDate}
-                </p>
-
-                <p>
-                    <b>Status:</b>
-                    ${task.status}
-                </p>
-
-                <div class="d-flex gap-2">
-
-                    <button
-                        class="btn btn-warning"
+                <div class="editDelete">
+                    <button class="btn btn-warning btn-sm"
                         onclick="editTask('${task.id}')"
                         data-bs-toggle="modal"
                         data-bs-target="#addTaskModal">
-
                         Edit
-
                     </button>
-
-                    <button
-                        class="btn btn-danger"
+                    <button class="btn btn-danger btn-sm"
                         onclick="deleteTask('${task.id}')">
-
                         Delete
-
                     </button>
-
                 </div>
 
             </div>
 
         `)
-
     })
 }
 
+
+// -------------------- DELETE --------------------
 async function deleteTask(id) {
 
     await fetch(`${API}/tasks/${id}`, {
         method: "DELETE"
-        // headers: {
-        //     'Content-Type': 'application/json'
-        // },
-        // body: JSON.stringify({
-        //     isDeleted: true
-        // })
     })
 
     getTasks()
 }
 
+
+// -------------------- EDIT --------------------
 async function editTask(id) {
 
     editingId = id
 
-    const response =
-        await fetch(`${API}/tasks/${id}`)
-
-    const data =
-        await response.json()
+    const res = await fetch(`${API}/tasks/${id}`)
+    const data = await res.json()
 
     $('#taskNameInput').val(data.taskName)
-
     $('#taskDescInput').val(data.taskDesc)
-
     $('#taskStartInput').val(data.startDate)
-
     $('#taskDueInput').val(data.dueDate)
-
     $('#status').val(data.status)
 }
 
+
+// -------------------- CLEAR INPUTS --------------------
 function clearInputs() {
 
     $('#taskNameInput').val('')
-
     $('#taskDescInput').val('')
-
     $('#taskStartInput').val('')
-
     $('#taskDueInput').val('')
-
     $('#status').val('')
 }
 
-$('#allTasksBtn').click(function () {
 
-    renderTasks(allTasks)
+// -------------------- FILTERS --------------------
+$('#allTasksBtn').click(() => renderTasks(allTasks))
 
+$('#completedBtn').click(() => {
+    renderTasks(allTasks.filter(t => t.status === 'Completed'))
 })
 
-$('#completedBtn').click(function () {
-
-    const filteredTasks =
-        allTasks.filter(task =>
-            task.status === 'Completed'
-        )
-
-    renderTasks(filteredTasks)
-
+$('#pendingBtn').click(() => {
+    renderTasks(allTasks.filter(t => t.status === 'Pending'))
 })
 
-$('#pendingBtn').click(function () {
-
-    const filteredTasks =
-        allTasks.filter(task =>
-            task.status === 'Pending'
-        )
-
-    renderTasks(filteredTasks)
-
+$('#notStartedBtn').click(() => {
+    renderTasks(allTasks.filter(t => t.status === 'Not Started'))
 })
 
-$('#notStartedBtn').click(function () {
 
-    const filteredTasks =
-        allTasks.filter(task =>
-            task.status === 'Not Started'
-        )
+// -------------------- ADD TASK BUTTON --------------------
+$('#addTaskBtn').click(() => addTask())
 
-    renderTasks(filteredTasks)
 
-})
-
-$('#addTaskBtn').click(function () {
-
-    addTask()
-
-})
-
-// function logout() {
-
-//     localStorage.removeItem(
-//         'loggedInUser'
-//     )
-
-//     window.location.href =
-//         'login.html'
-// }
-
+// -------------------- LOGOUT --------------------
 function logout() {
-
     localStorage.clear()
-
     window.location.replace('login.html')
-
 }
 
+
+// INIT
 getTasks()

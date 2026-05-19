@@ -1,5 +1,47 @@
 {
-  "users": [],
-  "tasks": [],
+  "users": [
+    {
+      "firstName": "Shawn",
+      "lastName": "Mathew Daniel",
+      "dob": "2005-11-19",
+      "age": "20",
+      "gender": "Male ",
+      "email": "shawn@gmail.com",
+      "username": "Demo_User_Shawn",
+      "password": "Shawn@123",
+      "id": "T4L9-tZC-XE"
+    },
+    {
+      "firstName": "Sujin",
+      "lastName": "Thomas Daniel",
+      "dob": "2000-03-26",
+      "age": "26",
+      "gender": "Male ",
+      "email": "sujin@gmail.com",
+      "username": "Demo_User_Sujin",
+      "password": "Sujin@123",
+      "id": "zimtA_KUPIM"
+    }
+  ],
+  "tasks": [
+    {
+      "taskName": "todo",
+      "taskDesc": "abcd",
+      "startDate": "2026-05-20",
+      "dueDate": "2026-05-29",
+      "status": "Pending",
+      "userId": "T4L9-tZC-XE",
+      "id": "MjM8xpgI-HU"
+    },
+    {
+      "taskName": "todo",
+      "taskDesc": "asfasfdsfdsf",
+      "startDate": "2026-05-09",
+      "dueDate": "2026-05-22",
+      "status": "Not Started",
+      "userId": "T4L9-tZC-XE",
+      "id": "QNUlGBnwrS4"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
