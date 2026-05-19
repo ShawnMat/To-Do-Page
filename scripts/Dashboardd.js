@@ -1,5 +1,10 @@
 const API = 'http://localhost:5000'
 
+console.log(localStorage.getItem('loggedInUser'));
+// console.log("run");
+
+
+
 const loggedInUser =
     JSON.parse(
         localStorage.getItem('loggedInUser')
@@ -42,6 +47,7 @@ async function addTask() {
         startDate,
         dueDate,
         status,
+        // isDeleted=false,
 
         userId: loggedInUser.id
 
@@ -91,12 +97,10 @@ async function addTask() {
 }
 
 async function getTasks() {
+    // const activeTasks = tasks.filter(task => !task.isDeleted)
+    const response = await fetch(`${API}/tasks`)
 
-    const response =
-        await fetch(`${API}/tasks`)
-
-    const data =
-        await response.json()
+    const data = await response.json()
 
     allTasks = data.filter(task =>
         task.userId == loggedInUser.id
@@ -167,6 +171,12 @@ async function deleteTask(id) {
 
     await fetch(`${API}/tasks/${id}`, {
         method: "DELETE"
+        // headers: {
+        //     'Content-Type': 'application/json'
+        // },
+        // body: JSON.stringify({
+        //     isDeleted: true
+        // })
     })
 
     getTasks()

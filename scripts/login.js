@@ -55,8 +55,8 @@ $('#loginBtn').click(async function () {
             JSON.stringify(validUser)
         )
 
-        window.location.href =
-            'Dashboardd.html'
+        window.location.replace(    
+            'Dashboardd.html')
 
     } else {
 

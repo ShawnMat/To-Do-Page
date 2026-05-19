@@ -17,8 +17,6 @@ $('#signupBtn').click(async function () {
     const password = $('#pwd').val()
     const confirmPassword = $('#cpwd').val()
 
-    // const nameRegex = /^[A-Za-z]+$/
-
     const emailRegex =
         /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -43,19 +41,6 @@ $('#signupBtn').click(async function () {
         alert('Please fill all fields')
         return
     }
-
-    // if (!nameRegex.test(firstName)) {
-
-    //     alert('Invalid First Name')
-    //     return
-    // }
-
-    // if (!nameRegex.test(lastName)) {
-
-    //     alert('Invalid Last Name')
-    //     return
-    // }
-
     if (!emailRegex.test(email)) {
 
         alert('Invalid Email')
@@ -63,46 +48,33 @@ $('#signupBtn').click(async function () {
     }
 
     if (!usernameRegex.test(username)) {
-
         alert(
             'Username must contain 4-15 characters'
         )
-
         return
     }
-
     if (!passwordRegex.test(password)) {
-
         alert(
             'Password must contain uppercase, lowercase, number and special character'
         )
-
         return
     }
-
     if (password !== confirmPassword) {
-
         alert('Passwords do not match')
         return
     }
-
     const response =
         await fetch(`${API}/users`)
-
     const users =
         await response.json()
-
     const existingUser =
         users.find(user =>
             user.username === username
         )
-
     if (existingUser) {
-
         alert('Username already exists')
         return
     }
-
     const userData = {
 
         firstName,
@@ -113,23 +85,15 @@ $('#signupBtn').click(async function () {
         email,
         username,
         password
-
     }
-
     await fetch(`${API}/users`, {
-
         method: "POST",
-
         headers: {
             "Content-Type": "application/json"
         },
-
         body: JSON.stringify(userData)
-
     })
-
     alert('Signup Successful')
-
     window.location.href = 'login.html'
 
 })

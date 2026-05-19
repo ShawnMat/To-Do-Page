@@ -1,12 +1,6 @@
 const API = 'http://localhost:5000'
-
 let editingId = null
-
 let allTasks = []
-
-// =============================================
-// ADD OR UPDATE TASK
-// =============================================
 
 async function addTask() {
 
@@ -25,38 +19,25 @@ async function addTask() {
     const status =
         $('#status').val()
 
-    // VALIDATION
-
     if (!taskName) {
-
         alert('Please enter a Task Name')
-
         return
     }
-
     if (!status) {
-
         alert('Please select a Status')
-
         return
     }
-
     const taskData = {
-
         taskName,
         taskDesc,
         startDate,
         dueDate,
         status
-
     }
 
     try {
 
-        // UPDATE TASK
-
         if (editingId) {
-
             await fetch(`${API}/tasks/${editingId}`, {
 
                 method: "PUT",
@@ -115,10 +96,6 @@ async function addTask() {
     }
 }
 
-// =============================================
-// GET TASKS FROM API
-// =============================================
-
 async function getTasks() {
 
     try {
@@ -152,9 +129,6 @@ async function getTasks() {
     }
 }
 
-// =============================================
-// RENDER TASKS ON PAGE
-// =============================================
 
 function renderTasks(tasks) {
 
@@ -165,7 +139,7 @@ function renderTasks(tasks) {
         $('.right-cont').append(`
 
             <div class="text-center mt-5">
-                <h3 class="text-muted">📭 No Tasks Found</h3>
+                <h3 class="text-muted"> No Tasks Found</h3>
                 <p class="text-secondary">Try adding a new task or change your filter</p>
             </div>
 
@@ -227,14 +201,14 @@ function renderTasks(tasks) {
                         data-bs-toggle="modal"
                         data-bs-target="#addTaskModal"
                     >
-                        ✏️ Edit
+                        Edit
                     </button>
 
                     <button
                         class="btn btn-danger btn-sm"
                         onclick="deleteTask('${task.id}')"
                     >
-                        🗑️ Delete
+                        Delete
                     </button>
 
                 </div>
