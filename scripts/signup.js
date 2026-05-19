@@ -37,39 +37,30 @@ $('#signupBtn').click(async function () {
         !password ||
         !confirmPassword
     ) {
-
         alert('Please fill all fields')
         return
     }
     if (!emailRegex.test(email)) {
-
         alert('Invalid Email')
         return
     }
-
     if (!usernameRegex.test(username)) {
-        alert(
-            'Username must contain 4-15 characters'
-        )
+        alert('Username must contain 4-15 characters')
         return
     }
     if (!passwordRegex.test(password)) {
-        alert(
-            'Password must contain uppercase, lowercase, number and special character'
-        )
+        alert('Password must contain uppercase, lowercase, number and special character')
         return
     }
     if (password !== confirmPassword) {
         alert('Passwords do not match')
         return
     }
-    const response =
-        await fetch(`${API}/users`)
+    const response = await fetch(`${API}/users`)
     const users =
         await response.json()
         
-    const existingUser =
-        users.find(user =>
+    const existingUser = users.find(user =>
             user.username === username
         )
     if (existingUser) {

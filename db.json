@@ -25,22 +25,26 @@
   ],
   "tasks": [
     {
-      "taskName": "todo",
-      "taskDesc": "abcd",
+      "taskName": "das",
+      "taskDesc": "dA",
       "startDate": "2026-05-20",
       "dueDate": "2026-05-29",
-      "status": "Pending",
+      "status": "Completed",
+      "priority": "Normal",
       "userId": "T4L9-tZC-XE",
-      "id": "MjM8xpgI-HU"
+      "deleted": false,
+      "id": "cmqXBj8UPIs"
     },
     {
-      "taskName": "todo",
-      "taskDesc": "asfasfdsfdsf",
-      "startDate": "2026-05-09",
-      "dueDate": "2026-05-22",
+      "taskName": "ewqewewq",
+      "taskDesc": "das",
+      "startDate": "2026-05-21",
+      "dueDate": "2026-05-26",
       "status": "Not Started",
+      "priority": "High",
       "userId": "T4L9-tZC-XE",
-      "id": "QNUlGBnwrS4"
+      "deleted": false,
+      "id": "NtvztdkEqZI"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
