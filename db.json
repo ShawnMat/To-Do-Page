@@ -32,7 +32,7 @@
       "status": "Completed",
       "priority": "Normal",
       "userId": "T4L9-tZC-XE",
-      "deleted": false,
+      "deleted": true,
       "id": "cmqXBj8UPIs"
     },
     {
@@ -43,8 +43,19 @@
       "status": "Not Started",
       "priority": "High",
       "userId": "T4L9-tZC-XE",
-      "deleted": false,
+      "deleted": true,
       "id": "NtvztdkEqZI"
+    },
+    {
+      "taskName": "Finish SQL",
+      "taskDesc": "Cursors",
+      "startDate": "2026-05-26",
+      "dueDate": "2026-05-28",
+      "status": "Pending",
+      "priority": "High",
+      "userId": "T4L9-tZC-XE",
+      "deleted": true,
+      "id": "rzDSe37Ip4k"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
