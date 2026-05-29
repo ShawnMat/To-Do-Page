@@ -1,4 +1,4 @@
-const API = 'http://localhost:5000'
+const API = 'http://localhost:3000'
 
 $('#loginBtn').click(async function () {
     const username = $('#usrname').val().trim()

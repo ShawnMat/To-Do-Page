@@ -1,10 +1,11 @@
-const API = 'http://localhost:5000'
+const API = 'http://localhost:3000'
 
 $('#signupBtn').click(async function () {
 
     const firstName = $('#fname').val().trim()
     const lastName = $('#lname').val().trim()
-    const dob = $('#date').val()
+    const cNum = $('#cNum').val().trim()
+    // const dob = $('#date').val()
     const age = $('#age').val()
 
     const gender =
@@ -29,7 +30,7 @@ $('#signupBtn').click(async function () {
     if (
         !firstName ||
         !lastName ||
-        !dob ||
+        !cNum ||
         !age ||
         !gender ||
         !email ||
@@ -71,7 +72,7 @@ $('#signupBtn').click(async function () {
 
         firstName,
         lastName,
-        dob,
+        cNum,
         age,
         gender,
         email,
