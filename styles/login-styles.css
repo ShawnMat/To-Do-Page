@@ -15,6 +15,12 @@ body{
 
     overflow:hidden;
 }
+.error{
+    color: red;
+    font-size: 14px;
+    display: block;
+    margin-top: 0px;
+}
 
 .login-card{
     width:500px;
@@ -54,9 +60,14 @@ body{
 .form-control{
     border-radius:12px !important;
     padding:12px !important;
-    margin-bottom:15px;
+    /* margin-bottom:15px; */
 }
 
+.input-container{
+    display: flex;
+    flex-direction: column;
+
+}
 .form-control:focus{
     border-color:#2a5a48 !important;
 

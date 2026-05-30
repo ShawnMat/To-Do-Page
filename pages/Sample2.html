@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup Form</title>
+
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="Sample2.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Signup Form</h2>
+
+    <input type="text" id="firstName" placeholder="First Name">
+    <input type="text" id="lastName" placeholder="Last Name">
+    <input type="text" id="cNum" placeholder="Contact Number">
+    <input type="number" id="age" placeholder="Age">
+
+    <select id="gender">
+        <option value="">Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+
+    <input type="email" id="email" placeholder="Email">
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <input type="password" id="confirmPassword" placeholder="Confirm Password">
+
+    <button onclick="validateForm()">Register</button>
+</div>
+
+<!-- jQuery + Toastr -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<!-- Your JS -->
+<script src="Sample2.js"></script>
+
+</body>
+</html>

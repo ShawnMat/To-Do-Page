@@ -1,35 +1,49 @@
-const API = 'http://localhost:3000'
+$(document).ready(function () {
+
+const API = 'http://localhost:5000'
+
+
+$('#usrname').on('input blur', function () {
+    let value = $(this).val().trim();
+    $('#UserError').text('');
+    if (!value) {
+        $('#UserError').text('UserName is required');
+    }
+});
+$('#pwd').on('input blur', function () {
+    let value = $(this).val().trim();
+    $('#PwdError').text('');
+    if (!value) {
+        $('#PwdError').text('Password is required');
+    }
+});
 
 $('#loginBtn').click(async function () {
     const username = $('#usrname').val().trim()
 
     const password = $('#pwd').val()
 
-    const usernameRegex = /^[A-Za-z0-9_]{4,15}$/
+    const usernameRegex = /^[A-Za-z0-9_]{4,20}$/
 
-    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{8,}$/
-
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!]).{8,}$/
     if (!username || !password) {
-        alert('Please fill all fields')
-        return
+        toastr.error('Please fill all fields');
+        return;
+        
     }
     if (!usernameRegex.test(username)) {
-        alert('Invalid Username')
+        toastr.error('Invalid UserName');
         return
     }
     if (!passwordRegex.test(password)) {
-        alert('Invalid Password Format')
+        toastr.error('Invalid Password format');
         return
     }
-    const response =
-        await fetch(`${API}/users`)
-    const users =
-        await response.json()
-    const validUser =
-        users.find(user =>
+    const response = await fetch(`${API}/users`)
+    const users = await response.json()
+    const validUser = users.find(user =>
             user.username === username &&
-            user.password === password
-        )
+            user.password === password)
     if (validUser) {
         alert('Login Successful')
         localStorage.setItem(
@@ -39,6 +53,7 @@ $('#loginBtn').click(async function () {
         window.location.replace(    
             'Dashboardd.html')
     } else {
-        alert('Invalid Username or Password')
+        toastr.error('Invalid Username or Password');
     }
 })
+});
