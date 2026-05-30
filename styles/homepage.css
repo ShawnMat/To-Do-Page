@@ -1,14 +1,28 @@
+/* .titillium-web-light {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+} */
+
 body{
-background: linear-gradient(90deg, #F6F4E8 0%, #E5EEE4 100%);
+/* background: linear-gradient(90deg, #F6F4E8 0%, #E5EEE4 100%); */
+background-color: #F6F4E8 !important;
+font-family: 'Playfair Display', serif !important;
 }
 
+/* p{
+    font-family: 'Playfair Display', serif;
+
+} */
 .Logo{
     width: 75px;
     height: 75px;
     border-radius: 50%;
 }
 .navbar{
-background: linear-gradient(90deg, #F6F4E8 0%, #E5EEE4 100%);
+/* background: linear-gradient(90deg, #F6F4E8 0%, #E5EEE4 100%); */
+background-color: #C0E1D2 !important;
+
 }
 .todo-animation{
     margin-top: 75px;

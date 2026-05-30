@@ -153,6 +153,17 @@
       "username": "usertest",
       "password": "Usertest@123",
       "id": "GZNCUBSJko0"
+    },
+    {
+      "firstName": "Arjun",
+      "lastName": "kumar",
+      "age": "20",
+      "cNum": "9999999990",
+      "gender": "on",
+      "email": "arjun@gmail.com",
+      "username": "arjuntest",
+      "password": "Arjun@123",
+      "id": "TsRkrDnCT9c"
     }
   ],
   "tasks": [

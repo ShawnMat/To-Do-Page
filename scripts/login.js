@@ -45,13 +45,22 @@ $('#loginBtn').click(async function () {
             user.username === username &&
             user.password === password)
     if (validUser) {
-        alert('Login Successful')
+        Swal.fire({
+            icon: 'success',
+            title: 'Log In Successful!',
+            text: 'Redirecting to Dashboard...',
+            timer: 2000,
+            showConfirmButton: false
+        });
+
         localStorage.setItem(
             'loggedInUser',
             JSON.stringify(validUser)
         )
-        window.location.replace(    
-            'Dashboardd.html')
+    setTimeout(() => {
+        window.location.replace("Dashboardd.html")
+    }, 2000);
+        
     } else {
         toastr.error('Invalid Username or Password');
     }
