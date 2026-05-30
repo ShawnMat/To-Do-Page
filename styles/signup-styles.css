@@ -1,0 +1,133 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+
+    background:linear-gradient(
+        90deg,
+        #F6F4E8 0%,
+        #E5EEE4 100%
+    );
+}
+
+.signup-card{
+    width:650px;
+
+    border:none !important;
+    border-radius:24px !important;
+
+    background:rgba(255,255,255,.75) !important;
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.12) !important;
+
+    animation:fadeUp .8s ease;
+}
+
+.signup-logo{
+    width:80px;
+    height:80px;
+
+    margin:auto;
+    display:block;
+    margin-bottom:10px;
+}
+
+.signup-card h2{
+    color:#2a4029;
+    font-weight:700;
+    margin-bottom:5px;
+}
+
+.subtitle{
+    color:#666;
+    margin-bottom:20px;
+}
+
+.form-control{
+    border-radius:12px !important;
+    padding:12px !important;
+}
+
+.form-control:focus{
+    border-color:#2a5a48 !important;
+
+    box-shadow:
+        0 0 10px rgba(42,90,72,.2) !important;
+}
+
+.gender-box{
+    background:#f8f9fa;
+    border-radius:12px;
+    padding:12px 15px;
+}
+
+.gender-title{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+    color:#2a4029;
+}
+
+.form-check-input:checked{
+    background-color:#2a5a48 !important;
+    border-color:#2a5a48 !important;
+}
+
+.signup-btn{
+    background:#2a4029 !important;
+    color:#F6F4E8 !important;
+
+    border:none !important;
+
+    padding:12px !important;
+
+    border-radius:12px !important;
+
+    font-weight:600 !important;
+
+    transition:.3s;
+}
+
+.signup-btn:hover{
+    background:#35543a !important;
+    transform:translateY(-2px);
+}
+
+.login-section{
+    text-align:center;
+    margin-top:20px;
+}
+
+.login-section span{
+    color:#555;
+}
+
+.login-section a{
+    text-decoration:none;
+    color:#2a5a48;
+    font-weight:600;
+    margin-left:5px;
+}
+
+.login-section a:hover{
+    text-decoration:underline;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}

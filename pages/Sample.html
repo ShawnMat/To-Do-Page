@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetAlert Demo</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+    <button onclick="showSuccess()">
+        Success Alert
+    </button>
+
+    <button onclick="showError()">
+        Error Alert
+    </button>
+
+    <button onclick="showToast()">
+        Toast Message
+    </button>
+
+    <button onclick="showConfirm()">
+        Confirmation
+    </button>
+
+    <script>
+
+        function showSuccess() {
+
+            Swal.fire({
+                title: "Success!",
+                text: "Account created successfully.",
+                icon: "success"
+            });
+
+        }
+
+        function showError() {
+
+            Swal.fire({
+                title: "Error!",
+                text: "Something went wrong.",
+                icon: "error"
+            });
+
+        }
+
+        function showToast() {
+
+            Swal.fire({
+                toast: true,
+                position: "top-end",
+                icon: "success",
+                title: "Task Added Successfully",
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true
+            });
+
+        }
+
+        function showConfirm() {
+
+            Swal.fire({
+                title: "Delete Task?",
+                text: "You won't be able to recover it!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, Delete",
+                cancelButtonText: "Cancel"
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Task removed successfully.",
+                        icon: "success"
+                    });
+
+                }
+
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>

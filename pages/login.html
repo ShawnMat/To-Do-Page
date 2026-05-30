@@ -3,26 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login - ToDoist</title>
+
     <link rel="stylesheet" href="/styles/login-styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <div class="container d-flex flex-column justify-content-center align-items-center vh-100">
-        <div class="card login-card shadow p-4 gap-3" style="width: 500px;">
-        <h2 class="text-primary text-center">WELCOME BACK</h2>
-            <input type="text" placeholder="Username" id="usrname" class="form-control">
-            <input type="password" placeholder="Password" id="pwd" class="form-control">
-            <button class="btn login-btn btn-primary w-80" id="loginBtn"> Log In </button>     
-                <div class="d-flex justify-content-center gap-2">
-                <p>Don't have an account?</p>
-                <a href="signup.html" class="text-decoration-none">Register here</a>
+
+    <div class="container vh-100 d-flex justify-content-center align-items-center">
+
+        <div class="card login-card p-4">
+
+            <img src="/icons/To Doist Logo.png" alt="Logo" class="login-logo">
+
+            <h2 class="text-center">Welcome Back</h2>
+
+            <p class="subtitle text-center">
+                Sign in to manage your tasks and stay productive.
+            </p>
+
+            <input
+                type="text"
+                placeholder="Username"
+                id="usrname"
+                class="form-control"
+            >
+
+            <input
+                type="password"
+                placeholder="Password"
+                id="pwd"
+                class="form-control"
+            >
+
+            <button class="btn login-btn" id="loginBtn">
+                Log In
+            </button>
+
+            <div class="register-section">
+                <span>Don't have an account?</span>
+                <a href="signup.html">
+                    Register here
+                </a>
             </div>
+
         </div>
+
     </div>
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="../scripts/login.js"></script>  
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="../scripts/login.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
