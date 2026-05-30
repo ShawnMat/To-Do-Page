@@ -2,44 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Signup Form</title>
-
-    <!-- Toastr CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-
-    <!-- Your CSS -->
-    <link rel="stylesheet" href="Sample2.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+     <link rel="stylesheet" href="/styles/homepage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
-<div class="container">
-    <h2>Signup Form</h2>
-
-    <input type="text" id="firstName" placeholder="First Name">
-    <input type="text" id="lastName" placeholder="Last Name">
-    <input type="text" id="cNum" placeholder="Contact Number">
-    <input type="number" id="age" placeholder="Age">
-
-    <select id="gender">
-        <option value="">Select Gender</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-    </select>
-
-    <input type="email" id="email" placeholder="Email">
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
-    <input type="password" id="confirmPassword" placeholder="Confirm Password">
-
-    <button onclick="validateForm()">Register</button>
-</div>
-
-<!-- jQuery + Toastr -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-<!-- Your JS -->
-<script src="Sample2.js"></script>
-
+<nav class="navbar navbar-expand-lg bg-body-tertiary fs-4 fw-bold">
+  <div class="container-fluid">
+    <img src="/icons/To Doist Logo.png" class="Logo">
+    <a class="navbar-brand px-3" href="#">ToDoist</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNavAltMarkup">
+      <div class="navbar-nav gap-3">
+        <a class="nav-link active" aria-current="page" href="#">About</a>
+        <a class="nav-link" href="#">Features</a>
+        <!-- <a class="nav-link" href="#">Blog</a> -->
+        <a class="nav-link" href="#">Contact</a>
+        <!-- <a class="nav-link disabled" aria-disabled="true">Disabled</a> -->
+      </div>
+    </div>
+    <!-- <button onclick="changeTheme()"> <img src="/icons/display.png" style="width: 35px; height:35px;"></button> -->
+    <div class="registration_btns d-flex gap-3  px-3">
+      <a href="/pages/login.html" class="loginBtn text-decoration-none text-black">Login</a>
+      <a href="/pages/signup.html" class="signupBtn text-decoration-none text-black">Sign Up</a>
+      <!-- <button class="btn" type="button"> Login </button>
+      <button class="btn" type="button"> Sign Up </button> -->
+    </div>
+  </div>
+</nav>
 </body>
 </html>
