@@ -164,6 +164,17 @@
       "username": "arjuntest",
       "password": "Arjun@123",
       "id": "TsRkrDnCT9c"
+    },
+    {
+      "firstName": "SUJIN",
+      "lastName": "DANIEL",
+      "age": "26",
+      "cNum": "6369634819",
+      "gender": "on",
+      "email": "sujin@gmal.com",
+      "username": "Sujin123",
+      "password": "Sujin@123",
+      "id": "LZZSrCGpU8s"
     }
   ],
   "tasks": [
@@ -199,6 +210,39 @@
       "userId": "T4L9-tZC-XE",
       "deleted": true,
       "id": "rzDSe37Ip4k"
+    },
+    {
+      "taskName": "dsfs",
+      "taskDesc": "                sfsd",
+      "startDate": "2026-06-01",
+      "dueDate": "2026-05-15",
+      "status": "Not Started",
+      "priority": "Normal",
+      "userId": "LZZSrCGpU8s",
+      "deleted": true,
+      "id": "sMW2M0V1F2E"
+    },
+    {
+      "taskName": "",
+      "taskDesc": "                ",
+      "startDate": "",
+      "dueDate": "",
+      "status": null,
+      "priority": null,
+      "userId": "LZZSrCGpU8s",
+      "deleted": true,
+      "id": "4wz6PnjLCpI"
+    },
+    {
+      "taskName": "wekufliuf;wiqufoniuf'noqiw;fo",
+      "taskDesc": "dd                ",
+      "startDate": "",
+      "dueDate": "",
+      "status": null,
+      "priority": null,
+      "userId": "LZZSrCGpU8s",
+      "deleted": true,
+      "id": "Afpl2AC-6mo"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

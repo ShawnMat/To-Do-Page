@@ -6,8 +6,13 @@
 
 body{
 /* background: linear-gradient(90deg, #F6F4E8 0%, #E5EEE4 100%); */
-background-color: #F6F4E8 !important;
-font-family: 'Playfair Display', serif !important;
+/* background-color: #F6F4E8 !important; */
+    background:linear-gradient(
+        90deg,
+        #E5EEE4 0%,
+        #F6F4E8 100%
+    ) !important;
+    font-family: 'Playfair Display', serif !important;
 }
 
 /* p{
