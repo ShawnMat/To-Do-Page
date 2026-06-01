@@ -169,7 +169,17 @@ function renderTasks(tasks) {
 
         $('.taskList').append(`
 
-            
+            <div class="card w-100 d-flex flex-row  bg-primary rounded-1">
+                        <input type="checkbox" id="taskCheckbox">
+                        <div class="main-content d-flex gap-5 justify-content-between">
+                            <h5>${task.taskName}</h5>
+                            <h5>${task.taskDesc}</h5>
+                            <p>${task.startDate}</p>
+                            <p>${task.dueDate}</p>
+                            <p>${task.status}</p>
+                        </div>
+                        <span class="badge bg-secondary">${task.priority}</span>
+                    </div>
 
         `)
     })
