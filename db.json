@@ -10,6 +10,17 @@
       "username": "Shawn",
       "password": "Shawn@123",
       "id": "ugOaPjfmokw"
+    },
+    {
+      "firstName": "Sujin",
+      "lastName": "Thomas Daniel",
+      "age": "26",
+      "cNum": "8978675689",
+      "gender": "on",
+      "email": "sujin@gmail.com",
+      "username": "Sujin",
+      "password": "Sujin@123",
+      "id": "FkHwMOJS6G0"
     }
   ],
   "tasks": [
