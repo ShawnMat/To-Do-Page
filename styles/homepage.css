@@ -19,6 +19,9 @@ body{
     font-family: 'Playfair Display', serif;
 
 } */
+ /* #logoutbtn{
+    border: none;
+ } */
 .Logo{
     width: 75px;
     height: 75px;
@@ -36,7 +39,18 @@ background-color: #C0E1D2 !important;
     align-items:center;
     min-width:500px;
 }
-
+.hero-card{
+    height: 100vh;
+}
+#about{
+    height: 100vh;
+}
+#features{
+    height: 100vh;
+}
+#contact{
+    height: 80vh;
+}
 .todo-card{
     width:380px;
     padding:30px;

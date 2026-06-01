@@ -1,4 +1,4 @@
-const API = 'http://localhost:3000'
+const API = 'http://localhost:5000'
 
 const loggedInUser = JSON.parse(
     localStorage.getItem('loggedInUser')
@@ -14,19 +14,47 @@ let allTasks = []
 // Show Today's Date
 const today = new Date()
 
+const day = formatDate(today)
+
+const dd = String(today.getDate()).padStart(2, "0");
+const mm = String(today.getMonth() + 1).padStart(2, "0");
+const yyyy = today.getFullYear();
+
+const formattedDate = `${day}, ${dd}-${mm}-${yyyy}`;
+console.log(formattedDate);
+
+function formatDate(dateString) {
+    const date = new Date(dateString);
+
+    const day = date.toLocaleDateString("en-US", {
+        weekday: "long"
+    });
+
+    const dd = String(date.getDate()).padStart(2, "0");
+    const mm = String(date.getMonth() + 1).padStart(2, "0");
+    const yyyy = date.getFullYear();
+
+    return `${day}, ${dd}-${mm}-${yyyy}`;
+}
+
+
 $('.navbar-header')
     .contents()
     .first()[0]
-    .textContent =
-    today.toLocaleDateString('en-IN', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-    })
+    .textContent = day
+    // today.toLocaleDateString('en-IN', {
+    //     day: 'numeric',
+    //     month: 'long',
+    //     year: 'numeric'
+    // })
 
-// ======================
-// Add / Update Task
-// ======================
+// $('#addTaskBtn').click(async function(){
+//     const nameTask = $('#taskNameInput').val().trim()
+//     const descTask = $('#taskDescInput').val().trim()
+//     const dueTask = $('#taskDueInput').val().trim()
+//     const priorityTask = $('#priority').val().trim()
+
+// })
 
 async function addTask() {
     try {
@@ -34,7 +62,8 @@ async function addTask() {
         const taskData = {
             taskName: $('#taskNameInput').val(),
             taskDesc: $('#taskDescInput').val(),
-            startDate: $('#taskStartInput').val(),
+            startDate: formattedDate,
+            // dueDate: formatDate($('#taskDueInput').val()),
             dueDate: $('#taskDueInput').val(),
             priority: $('#priority').val(),
             status: $('#status').val(),
@@ -45,12 +74,11 @@ async function addTask() {
         if (
             !taskData.taskName ||
             !taskData.taskDesc ||
-            !taskData.startDate ||
             !taskData.dueDate ||
             taskData.priority === 'Choose Priority' ||
             taskData.status === 'Choose Status'
         ) {
-            alert('Please fill all fields')
+            toaster.error('Please fill all fields')
             return
         }
 
@@ -106,9 +134,6 @@ async function addTask() {
     }
 }
 
-// ======================
-// Get Tasks
-// ======================
 
 async function getTasks() {
 
@@ -119,10 +144,13 @@ async function getTasks() {
 
         const data =
             await response.json()
-
+        const formattedDueDate = "";
         allTasks = data.filter(task =>
             task.userId == loggedInUser.id &&
-            task.deleted !== true
+            task.deleted !== true,
+            // formattedDueDate = format(task.dueDate)
+            
+            
         )
 
         renderTasks(allTasks)
@@ -134,9 +162,6 @@ async function getTasks() {
     }
 }
 
-// ======================
-// Render Tasks
-// ======================
 
 function renderTasks(tasks) {
 
@@ -169,25 +194,38 @@ function renderTasks(tasks) {
 
         $('.taskList').append(`
 
-            <div class="card w-100 d-flex flex-row  bg-primary rounded-1">
-                        <input type="checkbox" id="taskCheckbox">
-                        <div class="main-content d-flex gap-5 justify-content-between">
-                            <h5>${task.taskName}</h5>
-                            <h5>${task.taskDesc}</h5>
-                            <p>${task.startDate}</p>
-                            <p>${task.dueDate}</p>
-                            <p>${task.status}</p>
-                        </div>
-                        <span class="badge bg-secondary">${task.priority}</span>
-                    </div>
+           <div class="card w-100 rounded-1 ">
+        <div class="main-content px-4 py-3">
+            <div class="titleandDesc">
+                <h5>${task.taskName}</h5>
+                <h5>${task.taskDesc}</h5>
+            </div>
+                <p>${task.startDate}</p>
+                <p>${task.dueDate}</p>
+
+            <div class="priorityandStatus">
+                <span class="badge bg-secondary">
+                    ${task.priority}
+                </span>
+                <span class="badge bg-secondary">
+                    ${task.status}
+                </span>
+            </div>
+            <div>
+                <button class="btn" onclick="editTask('${task.id}')">
+                    <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class = "btn" onclick="deleteTask('${task.id}')">
+                    <i class="bi bi-trash3"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
         `)
     })
+    console.log(tasks)
 }
-
-// ======================
-// Summary Cards
-// ======================
 
 function updateSummary() {
 
@@ -212,6 +250,14 @@ function updateSummary() {
     $('.inprogress p').text(
         inProgress
     )
+    const notStarted =
+        allTasks.filter(
+            task => task.status === 'Not Started'
+        ).length
+
+    $('.notStarted p').text(
+        inProgress
+    )
 
     const today =
         new Date().toISOString().split('T')[0]
@@ -230,9 +276,6 @@ function updateSummary() {
     `)
 }
 
-// ======================
-// Delete Task
-// ======================
 
 async function deleteTask(id) {
 
@@ -267,9 +310,7 @@ async function deleteTask(id) {
     }
 }
 
-// ======================
-// Show Deleted Tasks
-// ======================
+
 
 async function showDeletedTasks() {
 
@@ -329,9 +370,6 @@ async function showDeletedTasks() {
     }
 }
 
-// ======================
-// Restore Task
-// ======================
 
 async function restoreTask(id) {
 
@@ -366,9 +404,7 @@ async function restoreTask(id) {
     }
 }
 
-// ======================
-// Edit Task
-// ======================
+
 
 async function editTask(id) {
 
@@ -382,36 +418,98 @@ async function editTask(id) {
     const task =
         await res.json()
 
-    $('#taskNameInput').val(
+    $('#EtaskNameInput').val(
         task.taskName
     )
 
-    $('#taskDescInput').val(
+    $('#EtaskDescInput').val(
         task.taskDesc
     )
 
-    $('#taskStartInput').val(
+    $('#EtaskStartInput').val(
         task.startDate
     )
 
-    $('#taskDueInput').val(
+    $('#EtaskDueInput').val(
         task.dueDate
     )
 
-    $('#priority').val(
+    $('#Epriority').val(
         task.priority
     )
 
-    $('#status').val(
+    $('#Estatus').val(
         task.status
     )
+
+    const modal = new bootstrap.Modal(
+        document.getElementById('editTaskModal')
+    )
+
+    modal.show()
 }
 
-// ======================
-// Priority Filters
-// ======================
+async function updateTask() {
 
+    try {
+
+        const taskData = {
+            taskName: $('#EtaskNameInput').val(),
+            taskDesc: $('#EtaskDescInput').val(),
+            dueDate: $('#EtaskDueInput').val(),
+            priority: $('#EPriority').val(),
+            status: $('#EStatus').val(),
+            userId: loggedInUser.id,
+            deleted: false,
+            startDate: formattedDate
+        }
+
+        if (
+            !taskData.taskName ||
+            !taskData.taskDesc ||
+            !taskData.dueDate ||
+            taskData.priority === 'Choose Priority' ||
+            taskData.status === 'Choose Status'
+        ) {
+            toastr.error('Please fill all fields')
+            return
+        }
+
+        await fetch(
+            `${API}/tasks/${editingId}`,
+            {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(taskData)
+            }
+        )
+
+        const modal =
+            bootstrap.Modal.getOrCreateInstance(
+                document.getElementById(
+                    'editTaskModal'
+                )
+            )
+
+        modal.hide()
+
+        getTasks()
+
+        toastr.success('Task Updated Successfully')
+
+    } catch (error) {
+
+        console.log(error)
+
+        toastr.error('Failed to update task')
+    }
+}
 $('#p-btns:nth-child(1)').click(() => {
+    renderTasks(allTasks)
+})
+$('#p-btns:nth-child(2)').click(() => {
     renderTasks(
         allTasks.filter(
             task => task.priority === 'High'
@@ -419,7 +517,7 @@ $('#p-btns:nth-child(1)').click(() => {
     )
 })
 
-$('#p-btns:nth-child(2)').click(() => {
+$('#p-btns:nth-child(3)').click(() => {
     renderTasks(
         allTasks.filter(
             task => task.priority === 'Normal'
@@ -427,17 +525,21 @@ $('#p-btns:nth-child(2)').click(() => {
     )
 })
 
-$('#p-btns:nth-child(3)').click(() => {
+$('#p-btns:nth-child(4)').click(() => {
     renderTasks(
         allTasks.filter(
             task => task.priority === 'Low'
         )
     )
 })
+const userProfileName = document.getElementById('userNameVal') 
+const Username = JSON.parse(localStorage.getItem('loggedInUser'))
+userProfileName.textContent = loggedInUser.firstName;
+console.log(userProfileName)
 
-// ======================
-// Clear Inputs
-// ======================
+$('#allTaskbtn').click(()=>{
+    renderTasks(allTasks)
+})
 
 function clearInputs() {
 
@@ -455,12 +557,46 @@ function clearInputs() {
     )
 }
 
-// ======================
-// Events
-// ======================
+// let calendarInitialized = false;
+// $('#calendarBtn').click(() => {
+
+//     $('.showTasks').html(`
+//         <div id="calendar"></div>
+//     `);
+
+//     const calendar =
+//         new FullCalendar.Calendar(
+//             document.getElementById('calendar'),
+//             {
+//                 initialView: 'dayGridMonth'
+//             }
+//         );
+
+//     calendar.render();
+// });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const calendarEl =
+        document.getElementById('calendar');
+
+    const calendar =
+        new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth'
+        });
+
+    $('#calendarModal').on('shown.bs.modal', () => {
+        calendar.render();
+    });
+
+});
 
 $('#addTaskBtn').click(() =>
     addTask()
+)
+$('#editTaskBtn').click(() =>
+    updateTask()
 )
 function logout() {
     localStorage.clear()

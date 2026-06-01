@@ -1,4 +1,4 @@
-const API = 'http://localhost:3000'
+const API = 'http://localhost:5000'
 
 const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
 
@@ -82,7 +82,7 @@ function renderTasks(tasks) {
         return
     }
     tasks.forEach(task => {
-        $('.left-cont').append(`
+        $('.taskList').append(`
             <div class="card d-flex flex-row justify-content-between align-items-center p-3 my-4 shadow">
                 <h5>${task.taskName}</h5>
                 <p>${task.taskDesc}</p>
@@ -102,8 +102,12 @@ function renderTasks(tasks) {
         `)
     })
 }
+const modal = document.getElementById('addTaskModal')
+const addmodal = new bootstrap.Modal(addTaskModal)
+function close(){
 
-
+    addmodal.hide()
+}
 async function deleteTask(id) {
     try {
         const res = await fetch(`${API}/tasks/${id}`)

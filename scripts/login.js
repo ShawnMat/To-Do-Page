@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-const API = 'http://localhost:3000'
+const API = 'http://localhost:5000'
 
 
 $('#usrname').on('input blur', function () {
