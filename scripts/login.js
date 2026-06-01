@@ -58,7 +58,7 @@ $('#loginBtn').click(async function () {
             JSON.stringify(validUser)
         )
     setTimeout(() => {
-        window.location.replace("Dashboardd.html")
+        window.location.replace("SampleDashboard.html")
     }, 2000);
         
     } else {

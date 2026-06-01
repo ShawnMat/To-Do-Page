@@ -1,3 +1,9 @@
+
+
+/* *{
+    outline: 1px solid red;
+} */
+
 .Logo{
     width: 50px ;
     height: 50px;
@@ -7,12 +13,75 @@
     width: 250px;
     height: 100vh;
     border-right: 1px solid #2a5a48 ;
+    display: flex;
+    flex-direction: column;
+
+    /* justify-content: space-evenly; */
 }
 
-nav{
+.workspace{
     width: 100vw;
+}
+.summary{
+    /* width: 100vw; */
+}
+
+
+.navbar-header{
+    width: 85vw;
     height: 75px;
     /* background-color: bisque; */
     border-bottom: 1px solid #2a5a48 ;
 
+}
+.totaltasks{
+    /* background-color: #2a495a; */
+    border: 1.5px solid #2a5a48;
+    width: 15%;
+}
+.completed{
+    /* background-color: #2a5a48; */
+    border: 1.5px solid #2a5a48;
+    width: 15%;
+}
+.inprogress{
+    /* background-color: #2a5a48; */
+    border: 1.5px solid #2a5a48;
+    width: 15%;
+}
+.overDue{
+    /* background-color: #2a5a48; */
+    border: 1.5px solid #2a5a48;
+    width: 15%;
+}
+/* .totaltasks{
+    background-color: #2a5a48;
+    width: 15%;
+} */
+ #summary-val{
+    display: flex;
+    gap:10px;
+    width: 200px;
+    height: 150px;
+    justify-content:center;
+    padding: 10px;
+    align-items: center;
+    flex-direction: column;
+ }
+ .showTasks{
+    border: 1.5px solid #2a5a48;
+    margin: 33px;
+ }
+ .priority-border{
+    background-color: rgb(212, 214, 215);
+    width: 200px;
+ }
+ #p-btns{
+    border-radius: 5px;
+    border: none;
+ }
+#showBorder{
+    margin: 10px;
+    width: 100%;
+    border: 1px solid #2a5a48;
 }
