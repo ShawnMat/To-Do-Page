@@ -41,7 +41,7 @@
       "priority": null,
       "status": null,
       "userId": "ugOaPjfmokw",
-      "deleted": true,
+      "deleted": false,
       "id": "upFRdJd-Dxw"
     },
     {
@@ -52,7 +52,7 @@
       "priority": null,
       "status": null,
       "userId": "ugOaPjfmokw",
-      "deleted": true,
+      "deleted": false,
       "id": "yLfoaV-NpVk"
     },
     {
@@ -63,7 +63,7 @@
       "priority": null,
       "status": null,
       "userId": "ugOaPjfmokw",
-      "deleted": true,
+      "deleted": false,
       "id": "821HLI9PNPo"
     },
     {
@@ -107,7 +107,7 @@
       "priority": "Normal",
       "status": "Pending",
       "userId": "ugOaPjfmokw",
-      "deleted": false,
+      "deleted": true,
       "id": "IP2gWvNT2CY"
     },
     {
@@ -118,7 +118,7 @@
       "priority": "Medium",
       "status": "Pending",
       "userId": "ugOaPjfmokw",
-      "deleted": false,
+      "deleted": true,
       "id": "xeJDuSuPCy0"
     },
     {
@@ -140,8 +140,30 @@
       "priority": "High",
       "status": "Not Started",
       "userId": "ugOaPjfmokw",
-      "deleted": false,
+      "deleted": true,
       "id": "x_h6kvIll0Y"
+    },
+    {
+      "taskName": "Financial Records",
+      "taskDesc": "Calculate monthly Financial amounts",
+      "startDate": "Tuesday, 02-06-2026, 02-06-2026",
+      "dueDate": "2026-06-22",
+      "priority": "Low",
+      "status": "Pending",
+      "userId": "ugOaPjfmokw",
+      "deleted": true,
+      "id": "wFY8V_lxgP4"
+    },
+    {
+      "taskName": "sd",
+      "taskDesc": "sad                ",
+      "startDate": "Tuesday, 02-06-2026, 02-06-2026",
+      "dueDate": "2026-06-03",
+      "priority": "Low",
+      "status": "Pending",
+      "userId": "ugOaPjfmokw",
+      "deleted": true,
+      "id": "zwbRfHecCdg"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

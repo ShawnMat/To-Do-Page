@@ -3,13 +3,16 @@
 /* *{
     outline: 1px solid red;
 } */
-
+body{
+    background-color: #E5EEE4 !important;
+}
 .Logo{
     width: 50px ;
     height: 50px;
 }
 .sidebar{
-    /* background-color: antiquewhite; */
+    background-color: #2A4029;
+    color: #E8E4CC;
     width: 250px;
     height: 100vh;
     border-right: 1px solid #2a5a48 ;
@@ -21,6 +24,7 @@
 
 .workspace{
     width: 100vw;
+    /* color: #E8E4CC; */
 }
 
 
@@ -28,27 +32,38 @@
 .navbar-header{
     width: 85vw;
     height: 75px;
+    color: #2A4029;
     /* background-color: bisque; */
     border-bottom: 1px solid #2a5a48 ;
 
 }
 .totaltasks{
     /* background-color: #2a495a; */
+    color: #2A4029;
     border: 1.5px solid #2a5a48;
     width: 15%;
 }
 .completed{
     /* background-color: #2a5a48; */
+    color: #2A4029;
     border: 1.5px solid #2a5a48;
     width: 15%;
 }
 .inprogress{
     /* background-color: #2a5a48; */
+    color: #2A4029;
+    border: 1.5px solid #2a5a48;
+    width: 15%;
+}
+.notStarted{
+    /* background-color: #2a5a48; */
+    color: #2A4029;
     border: 1.5px solid #2a5a48;
     width: 15%;
 }
 .overDue{
     /* background-color: #2a5a48; */
+    color: #2A4029;
     border: 1.5px solid #2a5a48;
     width: 15%;
 }
@@ -65,8 +80,10 @@
     padding: 10px;
     align-items: center;
     flex-direction: column;
+    color: #2A4029;
  }
  .showTasks{
+    color: #2A4029;
     border: 1.5px solid #2a5a48;
     margin: 33px;
  }
@@ -75,6 +92,7 @@
     width: 270px;
  }
  #p-btns{
+    color: #2A4029;
     border-radius: 5px;
     border: none;
  }
@@ -87,6 +105,10 @@
 .taskList{
     height: 375px;
     overflow: auto;
+    
+}
+.menu-text{
+    color: #2A4029 !important;
 }
 
 
