@@ -19,7 +19,7 @@ body{
 }
 .sidebar{
     
-    /* background-color: #d6ebf3; */
+    background-color: #e5eee4;
     color: #333333;
     width: 250px;
     height: 100vh;
@@ -32,9 +32,14 @@ body{
 
 .workspace{
     width: 100vw;
+    background-color: #f6f4f8;
     /* color: #E8E4CC; */
+    /* background-color: #333333; */
 }
-
+.content-cont{
+    
+    /* background:linear-gradient(135deg,#C0e1d2 0%,#e5eee4 20%,#f6f4f8 100%) */
+}
 
 .menu{
     color: #1F2937;
@@ -45,10 +50,12 @@ body{
     /* color: #2C5EAD; */
     /* background-color: bisque; */
     border-bottom: 1px solid #2F4156 ;
-    /* background-color: #d6ebf3; */
+    background-color: #e5eee4;
 
 }
-
+.filterByDate{
+    width: 150px;
+}
 .summary{
     /* background-color: #dadee1; */
 }
@@ -60,10 +67,11 @@ body{
 }
 
 .summary-val p{
-    color: #2F4156 !important;
+    color: #ffffff !important;
+    
 }
 .showTasks{
-    /* background-color: #447f98; */
+    background-color: #7ab8a2;
     /* background: linear-gradient(to right,#ded1c6,#a77693,#174871,#0f2d4d); */
 
 }
@@ -112,6 +120,11 @@ body{
     flex-direction: column;
     /* color: #2A4029; */
     
+ }
+
+ .searchDate{
+    border: none;
+    padding: 5px;
  }
  .showTasks{
     /* color: #2A4029; */

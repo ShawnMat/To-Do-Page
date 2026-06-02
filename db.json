@@ -27,13 +27,79 @@
     {
       "taskName": "CRUD",
       "taskDesc": "sample",
-      "startDate": "Tuesday, 02/06/2026",
       "dueDate": "2026-06-06",
+      "priority": "Low",
+      "status": "Completed",
+      "userId": "ugOaPjfmokw",
+      "deleted": false,
+      "startDate": "Tuesday, 02/06/2026",
+      "id": "_WGgzPzj56E"
+    },
+    {
+      "taskName": "ada",
+      "taskDesc": "sdfds",
+      "dueDate": "2026-06-11",
+      "priority": "Medium",
+      "status": "Pending",
+      "userId": "ugOaPjfmokw",
+      "deleted": false,
+      "startDate": "Tuesday, 02/06/2026",
+      "id": "hxplO63aHNY"
+    },
+    {
+      "taskName": "Hello",
+      "taskDesc": "asasas",
+      "dueDate": "2026-06-04",
+      "priority": "High",
+      "status": "Not Started",
+      "userId": "ugOaPjfmokw",
+      "deleted": false,
+      "startDate": "Tuesday, 02/06/2026",
+      "id": "mnvFMthayyk"
+    },
+    {
+      "taskName": "asd",
+      "taskDesc": "asdas",
+      "startDate": "Tuesday, 02/06/2026",
+      "dueDate": "2026-06-01",
+      "priority": "Medium",
+      "status": "Pending",
+      "userId": "ugOaPjfmokw",
+      "deleted": true,
+      "id": "V_dR4pzhK9Y"
+    },
+    {
+      "taskName": "CRUD ",
+      "taskDesc": "sample CRUD",
+      "dueDate": "2026-06-02",
+      "priority": "Medium",
+      "status": "Not Started",
+      "userId": "ugOaPjfmokw",
+      "deleted": true,
+      "startDate": "Tuesday, 02/06/2026",
+      "id": "cI16ovkHbUk"
+    },
+    {
+      "taskName": "khbklbl",
+      "taskDesc": "ppkonono",
+      "startDate": "Tuesday, 02/06/2026",
+      "dueDate": "2026-06-12",
       "priority": "High",
       "status": "Pending",
       "userId": "ugOaPjfmokw",
       "deleted": false,
-      "id": "_WGgzPzj56E"
+      "id": "yAvCikgOW7Q"
+    },
+    {
+      "taskName": "TASK 1",
+      "taskDesc": "Description 1",
+      "startDate": "Tuesday, 02/06/2026",
+      "dueDate": "2026-06-11",
+      "priority": "Medium",
+      "status": "Not Started",
+      "userId": "ugOaPjfmokw",
+      "deleted": false,
+      "id": "BqJhIYn5RBg"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

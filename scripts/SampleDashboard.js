@@ -70,10 +70,7 @@ $('#taskDueInput').on('input blur', function () {
 
 $('.menu-text').click(function () {
 
-    // remove active from all
     $('.menu-text').removeClass('active');
-
-    // add active to clicked one
     $(this).addClass('active');
 });
 
@@ -157,6 +154,12 @@ async function addTask() {
             )
 
         modal.hide()
+        Swal.fire({
+            icon: 'success',
+            title: 'Task Added Successfully',
+            showConfirmButton: false,
+            timer: 2000
+        });
 
     } catch (error) {
         console.log(error)
@@ -173,14 +176,10 @@ async function getTasks() {
 
         const data =
             await response.json()
-        const formattedDueDate = "";
         allTasks = data.filter(task =>
             task.userId == loggedInUser.id &&
-            task.deleted !== true,
-            // formattedDueDate = format(task.dueDate)
-            
-            
-        )
+            task.deleted !== true,           
+        ).reverse()
 
         renderTasks(allTasks)
 
@@ -222,17 +221,29 @@ function renderTasks(tasks) {
     }
 
     tasks.forEach(task => {
+        let priorityColor = '';
+        let statusColor = '';
 
-        let priorityColor = ''
-
+        // Priority Colors
         if (task.priority === 'High') {
-            priorityColor = 'danger'
+            priorityColor = 'danger';
         }
-        else if (task.priority === 'Normal') {
-            priorityColor = 'warning'
+        else if (task.priority === 'Medium') {
+            priorityColor = 'warning';
         }
         else {
-            priorityColor = 'success'
+            priorityColor = 'success';
+        }
+
+        // Status Colors
+        if (task.status === 'Completed') {
+            statusColor = 'success';
+        }
+        else if (task.status === 'Pending') {
+            statusColor = 'warning';
+        }
+        else {
+            statusColor = 'secondary';
         }
 
         $('.taskList').append(`
@@ -253,18 +264,19 @@ function renderTasks(tasks) {
                 </div>
 
             <div class="priorityandStatus">
-                <span class="badge bg-secondary">
+                <span class="badge bg-${priorityColor}">
                     ${task.priority}
                 </span>
-                <span class="badge bg-secondary">
+
+                <span class="badge bg-${statusColor}">
                     ${task.status}
                 </span>
             </div>
             <div>
-                <button class="btn" onclick="editTask('${task.id}')">
+                <button class="btn" onclick="confirmEdit('${task.id}')">
                     <i class="bi bi-pencil-square"></i>
                 </button>
-                <button class = "btn" onclick="deleteTask('${task.id}')">
+                <button class = "btn" id="deleteBtn" onclick="confirmDelete('${task.id}')" >
                     <i class="bi bi-trash3"></i>
                 </button>
             </div>
@@ -272,12 +284,105 @@ function renderTasks(tasks) {
     </div>
 
         `)
+        // $('#deleteBtn').click(()=>{
+        //     Swal.fire({
+        //         icon: 'Confirm',
+        //         title: 'Are You Sure to Delete Task?',
+        //         showConfirmButton: true,
+        //     }).then((result)=>{
+        //         if(result.isConfirmed){
+        //             deleteTask(task.id)
+        //         }
+        //     })
+        // }) 
     })
-    console.log(tasks)
+    // console.log(tasks)
+}
+
+function confirmEdit(id) {
+
+    Swal.fire({
+        title: 'Edit Task?',
+        text: 'This task will be Edited',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, Edit',
+        cancelButtonText: 'Cancel',
+        reverseButtons: true
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            editTask(id);
+        }
+
+    });
+
+}
+function successEdit(){
+    Swal.fire({
+        icon: 'success',
+        title: 'Task Edited Successfully',
+        showConfirmButton: false,
+        timer: 2000
+    });
+}
+function confirmDelete(id) {
+    
+    Swal.fire({
+        title: 'Delete Task?',
+        text: 'This task will be moved to Restore.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, Delete',
+        cancelButtonText: 'Cancel',
+        reverseButtons: true
+    }).then((result) => {
+        
+        if (result.isConfirmed) {
+            deleteTask(id);
+        }
+        
+    });
+    
+}
+function successDelete(){
+    Swal.fire({
+        icon: 'success',
+        title: 'Task Deleted Successfully',
+        showConfirmButton: false,
+        timer: 2000
+    });
+}
+function confirmRestore(id) {
+    
+    Swal.fire({
+        title: 'Restore Task?',
+        text: 'This task will be Restored.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, Restore',
+        cancelButtonText: 'Cancel',
+        reverseButtons: true
+    }).then((result) => {
+        
+        if (result.isConfirmed) {
+            restoreTask(id);
+        }
+        
+    });
+    
+}
+function successRestore(){
+    Swal.fire({
+        icon: 'success',
+        title: 'Task Restored Successfully',
+        showConfirmButton: false,
+        timer: 2000
+    });
 }
 
 function updateSummary() {
-
+    
     $('#totalNumber').text(
         allTasks.length
     )
@@ -324,7 +429,7 @@ function updateSummary() {
     //     <p class="fs-1">${overdue}</p>
     // `)
     $('#overdueNum').text(
-        notStarted
+        overdue
     )
 }
 
@@ -356,7 +461,7 @@ async function deleteTask(id) {
         )
 
         getTasks()
-
+        successDelete()
     } catch (error) {
         console.log(error)
     }
@@ -407,7 +512,7 @@ async function showDeletedTasks() {
 
                     <button
                         class="btn btn-success btn-sm"
-                        onclick="restoreTask('${task.id}')">
+                        onclick="confirmRestore('${task.id}')">
 
                         Restore
 
@@ -415,6 +520,7 @@ async function showDeletedTasks() {
 
                 </div>
             `)
+            
         })
 
     } catch (error) {
@@ -427,29 +533,34 @@ async function restoreTask(id) {
 
     try {
 
-        const res =
-            await fetch(
-                `${API}/tasks/${id}`
-            )
-
-        const task =
-            await res.json()
+        const res = await fetch(`${API}/tasks/${id}`)
+        const task = await res.json()
 
         task.deleted = false
 
-        await fetch(
-            `${API}/tasks/${id}`,
-            {
-                method: 'PUT',
-                headers: {
-                    'Content-Type':
-                        'application/json'
-                },
-                body: JSON.stringify(task)
-            }
-        )
+        await fetch(`${API}/tasks/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(task)
+        })
 
-        showDeletedTasks()
+        // Refresh allTasks array
+        const response = await fetch(`${API}/tasks`)
+        const data = await response.json()
+
+        allTasks = data.filter(task =>
+            task.userId == loggedInUser.id &&
+            task.deleted !== true
+        )
+        
+
+        await showDeletedTasks()
+
+        updateSummary()
+
+        successRestore()
 
     } catch (error) {
         console.log(error)
@@ -558,7 +669,7 @@ async function updateTask() {
 
         getTasks()
 
-        toastr.success('Task Updated Successfully')
+        successEdit()
 
     } catch (error) {
 
@@ -567,6 +678,61 @@ async function updateTask() {
         toastr.error('Failed to update task')
     }
 }
+$('.totaltasks').click(()=>{
+    renderTasks(allTasks)
+})
+$('.completed').click(()=>{
+    renderTasks(allTasks.filter(
+        task => task.status === 'Completed'
+    ))
+})
+$('.inprogress').click(()=>{
+    renderTasks(allTasks.filter(
+        task => task.status === 'Pending'
+    ))
+})
+$('.notStarted').click(()=>{
+    renderTasks(allTasks.filter(
+        task => task.status === 'Not Started'
+    ))
+})
+
+// function convertToInputDate(dateString) {
+//     const datePart = dateString.split(", ")[1];
+//     const [dd, mm, yyyy] = datePart.split("/");
+
+//     return `${yyyy}-${mm}-${dd}`;
+// }
+
+// console.log(
+//     convertToInputDate("Tuesday, 02/06/2026")
+// );
+
+// $('.overDue').click(()=>{
+//     renderTasks(allTasks.filter(
+//         task => task.dueDate < today
+//     ))
+// })
+
+$('.overDue').click(() => {
+
+    const today = getTodayDate();
+
+    renderTasks(
+        allTasks.filter(
+            task =>
+                task.dueDate < today &&
+                task.status !== 'Completed'
+        )
+    );
+
+});
+
+
+
+
+
+
 $('#p-btns:nth-child(1)').click(() => {
     renderTasks(allTasks)
 })
@@ -594,7 +760,6 @@ $('#p-btns:nth-child(4)').click(() => {
     )
 })
 const userProfileName = document.getElementById('userNameVal') 
-const Username = JSON.parse(localStorage.getItem('loggedInUser'))
 userProfileName.textContent = loggedInUser.firstName;
 console.log(userProfileName)
 
@@ -635,8 +800,67 @@ function clearInputs() {
 
 //     calendar.render();
 // });
+$('#applyDateFilter').click(() => {
 
+    const startDate =
+        $('#filterStartDate').val();
 
+    const dueDate =
+        $('#filterDueDate').val();
+
+    $('#filterDateError').text('');
+
+    if (!startDate || !dueDate) {
+
+        $('#filterDateError').text(
+            'Please select both dates'
+        );
+
+        return;
+    }
+
+    if (startDate > dueDate) {
+
+        $('#filterDateError').text(
+            'Start date cannot be after due date'
+        );
+
+        return;
+    }
+
+    const filteredTasks =
+        allTasks.filter(task => {
+
+            const taskDueDate =
+                task.dueDate;
+
+            return (
+                taskDueDate >= startDate &&
+                taskDueDate <= dueDate
+            );
+
+        }).reverse();
+
+    renderTasks(filteredTasks);
+
+    bootstrap.Modal
+        .getInstance(
+            document.getElementById(
+                'filterDateModal'
+            )
+        )
+        .hide();
+
+});
+
+$('#clearDateFilter').click(() => {
+
+    $('#filterStartDate').val('');
+    $('#filterDueDate').val('');
+
+    renderTasks(allTasks);
+
+});
 document.addEventListener('DOMContentLoaded', () => {
 
     const calendarEl =
@@ -653,11 +877,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-$('#addTaskBtn').click(() =>
+
+
+
+$('#submitTaskBtn').click(() =>
     addTask()
+)
+$('#addTaskBtn').click(() =>
+    getTasks()
 )
 $('#editTaskBtn').click(() =>
     updateTask()
+    // successEdit()
 )
 function logout() {
     localStorage.clear()

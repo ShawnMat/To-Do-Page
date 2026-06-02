@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.18/index.global.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -25,9 +26,9 @@
                         <i class="bi bi-grid"></i>
                         <p class="menu-text"> Dashboard</p>
                     </button>   
-                    <button class="btn Mytask-text d-flex gap-2" type="button">
-                        <i class="bi bi-check2-square"></i>
-                        <p class="menu-text">My Tasks</p>
+                    <button class=" btn filterByDate d-flex gap-2 mb-3" data-bs-toggle="modal" data-bs-target="#filterDateModal">
+                        <i class="bi bi-calendar-date"></i>
+                        Filter by Date
                     </button>
                     <button
                         class="btn calendar-text d-flex gap-2"
@@ -45,8 +46,8 @@
                     <p id="userNameVal"></p>
                 </button>
                 <button class="btn rounded-1 d-flex gap-2" onclick="logout()" id="logoutBtn" type="button">
-                            <i class="bi bi-box-arrow-left"></i>
-                            <p class="menu-text">Logout</p>
+                    <i class="bi bi-box-arrow-left"></i>
+                    <p class="menu-text">Logout</p>
                 </button>
             </div>
         </div>
@@ -54,11 +55,13 @@
             <div class="nav ">
                 <div class="navbar-header d-flex justify-content-between px-5 py-4">
                     Today's Date
-                    <div class="btns">
+                    
+                    <div class="btns d-flex">
                         <button class=" btn rounded-1" data-bs-toggle="modal" data-bs-target="#addTaskModal" type="button">
                             <i class="bi bi-plus-square-fill"></i>
                             Add Task
                         </button>
+                        
                         <button class="btn rounded-1" onclick="showDeletedTasks()" type="button">
                             <i class="bi bi-arrow-counterclockwise"></i>
                             Restore
@@ -71,63 +74,63 @@
                     </div>
                 </div>
             </div>
-            <div class="summary d-flex justify-content-around mt-4">
-                <div class="totaltasks rounded-1" id="summary-val">
-                    <div class="totaltasks-cont d-flex gap-2">
-                        <i class="bi bi-list"></i>
-                        <p class="fw-bold" style="color: #2F4156;">Total</p>
-                    </div>
-                    <p class="fs-1" id="totalNumber"></p>
+            <div class="content-cont">
+                <div class="summary d-flex justify-content-around mt-4">
+                    <button class="totaltasks rounded-1" data-bs-toggle="modal" data-bs-target="#totalTasksModal" style="background-color: #7ab8a2;" id="summary-val">
+                        <div class="totaltasks-cont d-flex gap-2">
+                            <i class="bi bi-list"></i>
+                            <p class="fw-bold" >Total</p>
+                        </div>
+                        <p class="fs-1" id="totalNumber"></p>
+                    </button>
+                    <button class="completed rounded-1" data-bs-toggle="modal" data-bs-target="#completedModal" style="background-color: #7ab8a2;" id="summary-val">
+                        <div class="completed-cont d-flex gap-2">
+                            <i class="bi bi-check2-square"></i>
+                            <p class="fw-bold">Completed</p>
+                        </div>
+                        <p class="fs-1" id="completedNum"></p>
+                    </button>
+                    <button class="inprogress rounded-1 " data-bs-toggle="modal" data-bs-target="#inProgressModal" style="background-color: #7ab8a2;" id="summary-val">
+                        <div class="inprogress-cont  d-flex gap-2">
+                            <i class="bi bi-hourglass-split"></i>
+                            <p class="fw-bold">InProgress</p>
+                        </div>
+                        <p class="fs-1" id="inprogressNum"></p>
+                    </button>
+                    <button class="notStarted rounded-1" data-bs-toggle="modal" data-bs-target="#notStartedModal" style="background-color: #7ab8a2;" id="summary-val">
+                        <div class="notStarted-cont d-flex gap-2 ">
+                            <i class="bi bi-pause-circle"></i>
+                            <p class="fw-bold">Not Started</p>
+                        </div>
+                        <p class="fs-1" id="notStartedNum"></p>
+                    </button>
+                    <button class="overDue rounded-1 " data-bs-toggle="modal" data-bs-target="#overDueModal" style="background-color: #7ab8a2;" id="summary-val">
+                        <div class="overDue-cont d-flex gap-2">
+                            <i class="bi bi-clock-history "></i>
+                            <p class="fw-bold">OverDue</p>
+                        </div>
+                        <p class="fs-1" id="overdueNum"></p>
+                    </button>
                 </div>
-                <div class="completed rounded-1" id="summary-val">
-                    <div class="completed-cont d-flex gap-2">
-                        <i class="bi bi-check2-square"></i>
-                        <p class="fw-bold">Completed</p>
-                    </div>
-                    <p class="fs-1" id="completedNum"></p> 
-                </div>
-                <div class="inprogress rounded-1 " id="summary-val">
-                    <div class="inprogress-cont  d-flex gap-2">
-                        <i class="bi bi-hourglass-split"></i>
-                        <p class="fw-bold">InProgress</p>
-                    </div>
-                    <p class="fs-1" id="inprogressNum"></p>
-                </div>
-                <div class="notStarted rounded-1" id="summary-val">
-                    <div class="notStarted-cont d-flex gap-2 ">
-                        <i class="bi bi-pause-circle"></i>
-                        <p class="fw-bold">Not Started</p>
-                    </div>
-                    <p class="fs-1" id="notStartedNum"></p>
-                </div>
-                <div class="overDue rounded-1 " id="summary-val">
-                    <div class="overDue-cont d-flex gap-2">
-                        <i class="bi bi-clock-history "></i>
-                        <p class="fw-bold">OverDue</p>
-                    </div>
-                    <p class="fs-1" id="overdueNum"></p>
-                </div>
-            </div>
-            <div class="showTasks rounded-1 p-3">
-                <div class="heading d-flex justify-content-between">
-                    <p class="fw-bold fs-5">My Tasks</p>
-                    <div class="priority-filters d-flex">
-                        <div class="priority-border d-flex align-items-center justify-content-center rounded-1">
-                            <div class="priority-btns">
-                                <button id="p-btns">All Tasks</button>
-                                <button id="p-btns">High</button>
-                                <button id="p-btns">Medium</button>
-                                <button id="p-btns">Low</button>
+                <div class="showTasks rounded-1 p-3">
+                    <div class="heading d-flex justify-content-between">
+                        <p class="fw-bold fs-5">My Tasks</p>
+                        <div class="priority-filters d-flex">
+                            <div class="priority-border d-flex align-items-center justify-content-center rounded-1">
+                                <div class="priority-btns">
+                                    <button id="p-btns">All Tasks</button>
+                                    <button id="p-btns">High</button>
+                                    <button id="p-btns">Medium</button>
+                                    <button id="p-btns">Low</button>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <p id="showBorder"></p>
+                    <!-- Task List -->
+                    <div class="taskList ">
+                    </div>
                 </div>
-                <p id="showBorder"></p>
-                <!-- Task List -->
-                <div class="taskList ">
-                </div>
-
-
             </div>
 
         </div>
@@ -196,7 +199,7 @@
 
                 </select>
                 <p class="statusError"></p>
-                <button class="btn btn-primary w-100" id="addTaskBtn" >
+                <button class="btn btn-primary w-100" id="submitTaskBtn" >
                     Submit
                 </button>
                 </div>
@@ -270,10 +273,65 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="filterDateModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
+            <div class="modal-header">
+                <h5>Filter Tasks By Date</h5>
+                <button
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <label class="fw-bold mb-1">
+                    Start Date
+                </label>
+
+                <input
+                    type="date"
+                    class="form-control mb-3"
+                    id="filterStartDate">
+
+                <label class="fw-bold mb-1">
+                    Due Date
+                </label>
+
+                <input
+                    type="date"
+                    class="form-control mb-3"
+                    id="filterDueDate">
+
+                <p
+                    class="text-danger"
+                    id="filterDateError">
+                </p>
+
+                <button
+                    class="btn btn-primary w-100"
+                    id="applyDateFilter">
+
+                    Apply Filter
+
+                </button>
+                <button
+                    class="btn btn-secondary w-100 mt-2"
+                    id="clearDateFilter">
+
+                    Clear Filter
+
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
     
 
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.18/index.global.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
