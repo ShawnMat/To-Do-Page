@@ -54,6 +54,9 @@
             <div class="nav ">
                 <div class="navbar-header d-flex justify-content-between px-5 py-4">
                     Today's Date
+                    <div class="searchByDate">
+                        <input class="searchDate rounded-1" type="search" placeholder="Filter By Date">
+                    </div>
                     <div class="btns">
                         <button class=" btn rounded-1" data-bs-toggle="modal" data-bs-target="#addTaskModal" type="button">
                             <i class="bi bi-plus-square-fill"></i>
@@ -196,7 +199,7 @@
 
                 </select>
                 <p class="statusError"></p>
-                <button class="btn btn-primary w-100" id="addTaskBtn" >
+                <button class="btn btn-primary w-100" id="submitTaskBtn" >
                     Submit
                 </button>
                 </div>

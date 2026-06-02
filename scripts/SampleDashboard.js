@@ -653,8 +653,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-$('#addTaskBtn').click(() =>
+
+
+
+$('#submitTaskBtn').click(() =>
     addTask()
+)
+$('#addTaskBtn').click(() =>
+    getTasks()
 )
 $('#editTaskBtn').click(() =>
     updateTask()

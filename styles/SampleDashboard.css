@@ -54,13 +54,13 @@ body{
 }
 
 #summary-val{
-    background-color: #447f98;
+    background-color: #56dfcf;
     border: 1.5px solid #2a5a48;
     width: 15%; 
 }
 
 .summary-val p{
-    color: #2F4156 !important;
+    color: #ffffff !important;
 }
 .showTasks{
     background-color: #447f98;
@@ -112,6 +112,11 @@ body{
     flex-direction: column;
     /* color: #2A4029; */
     
+ }
+
+ .searchDate{
+    border: none;
+    padding: 5px;
  }
  .showTasks{
     /* color: #2A4029; */

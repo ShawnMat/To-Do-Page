@@ -32,8 +32,19 @@
       "priority": "High",
       "status": "Pending",
       "userId": "ugOaPjfmokw",
-      "deleted": false,
+      "deleted": true,
       "id": "_WGgzPzj56E"
+    },
+    {
+      "taskName": "ada",
+      "taskDesc": "sdfds",
+      "startDate": "Tuesday, 02/06/2026",
+      "dueDate": "2026-06-11",
+      "priority": "High",
+      "status": "Pending",
+      "userId": "ugOaPjfmokw",
+      "deleted": true,
+      "id": "hxplO63aHNY"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
