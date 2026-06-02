@@ -1,4 +1,4 @@
-const API = 'http://localhost:3000'
+const API = 'http://localhost:5000'
 
 const loggedInUser = JSON.parse(
     localStorage.getItem('loggedInUser')
@@ -11,50 +11,72 @@ if (!loggedInUser) {
 let editingId = null
 let allTasks = []
 
+function getTodayDate() {
+    return new Date().toISOString().split('T')[0];
+}
 // Show Today's Date
 const today = new Date()
 
-const day = formatDate(today)
+const day = today.toLocaleDateString("en-US", {
+    weekday: "long"
+})
 
-const dd = String(today.getDate()).padStart(2, "0");
-const mm = String(today.getMonth() + 1).padStart(2, "0");
-const yyyy = today.getFullYear();
-
-const formattedDate = `${day}, ${dd}-${mm}-${yyyy}`;
-console.log(formattedDate);
+const formattedDate = today.toLocaleDateString("en-IN", {
+    weekday: "long",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric"
+})
+// console.log(formattedDate);
 
 function formatDate(dateString) {
     const date = new Date(dateString);
-
+    
     const day = date.toLocaleDateString("en-US", {
         weekday: "long"
     });
-
+    
     const dd = String(date.getDate()).padStart(2, "0");
     const mm = String(date.getMonth() + 1).padStart(2, "0");
     const yyyy = date.getFullYear();
-
+    const fullDate = `${day}, ${dd}-${mm}-${yyyy}`;
     return `${day}, ${dd}-${mm}-${yyyy}`;
 }
 
 
 $('.navbar-header')
-    .contents()
-    .first()[0]
-    .textContent = day
-    // today.toLocaleDateString('en-IN', {
-    //     day: 'numeric',
-    //     month: 'long',
-    //     year: 'numeric'
-    // })
+.contents()
+.first()[0]
+.textContent = day
 
-// $('#addTaskBtn').click(async function(){
-//     const nameTask = $('#taskNameInput').val().trim()
-//     const descTask = $('#taskDescInput').val().trim()
-//     const dueTask = $('#taskDueInput').val().trim()
-//     const priorityTask = $('#priority').val().trim()
 
-// })
+$('#taskDueInput').on('input blur', function () {
+
+    let value = $(this).val();
+
+    const today = getTodayDate();
+
+    if (!value) {
+        $('.taskDueInputError').text('Due Date required');
+    }
+    else if (value < today) {
+        $('.taskDueInputError').text('Due Date cannot be before today');
+        // toaster.error('Due Date cannot be before today')
+    }
+    else {
+        $('.taskDueInputError').text('');
+    }
+});
+
+$('.menu-text').click(function () {
+
+    // remove active from all
+    $('.menu-text').removeClass('active');
+
+    // add active to clicked one
+    $(this).addClass('active');
+});
+
 
 async function addTask() {
     try {
@@ -70,6 +92,13 @@ async function addTask() {
             userId: loggedInUser.id,
             deleted: false
         }
+
+        const today = getTodayDate();
+
+    if (taskData.dueDate < today) {
+        toaster.error("Due Date cannot be before current date");
+        return;
+    }
 
         if (
             !taskData.taskName ||
@@ -124,7 +153,7 @@ async function addTask() {
             bootstrap.Modal.getInstance(
                 document.getElementById(
                     'addTaskModal'
-                )
+                )   
             )
 
         modal.hide()
@@ -162,6 +191,20 @@ async function getTasks() {
     }
 }
 
+function formatFullDate(dateString) {
+    const date = new Date(dateString);
+
+    const day = date.toLocaleDateString("en-US", {
+        weekday: "long"
+    });
+
+    const dd = String(date.getDate()).padStart(2, "0");
+    const mm = String(date.getMonth() + 1).padStart(2, "0");
+    const yyyy = date.getFullYear();
+
+    return `${day}, ${dd}-${mm}-${yyyy}`;
+}
+
 
 function renderTasks(tasks) {
 
@@ -197,11 +240,17 @@ function renderTasks(tasks) {
            <div class="card w-100 rounded-1 ">
         <div class="main-content px-4 py-3">
             <div class="titleandDesc">
-                <h5>${task.taskName}</h5>
-                <h5>${task.taskDesc}</h5>
+                <h4 class="fw-bold">${task.taskName}</h4>
+                <p class="fst-italic">${task.taskDesc}</p>
             </div>
-                <p>${task.startDate}</p>
-                <p>${task.dueDate}</p>
+                <div class="startdate">
+                    <p class="fw-bold">Start Date:</p>
+                    <p>${task.startDate}</p>
+                </div>
+                <div class="enddate">
+                    <p class="fw-bold">End Date:</p>
+                    <p>${formatFullDate(task.dueDate)}</p>
+                </div>
 
             <div class="priorityandStatus">
                 <span class="badge bg-secondary">
@@ -247,7 +296,7 @@ function updateSummary() {
             task => task.status === 'Pending'
         ).length
 
-    $('.inprogress p').text(
+    $('#inprogressNum').text(
         inProgress
     )
     const notStarted =
@@ -255,8 +304,8 @@ function updateSummary() {
             task => task.status === 'Not Started'
         ).length
 
-    $('.notStarted p').text(
-        inProgress
+    $('#notStartedNum').text(
+        notStarted
     )
 
     const today =
@@ -269,11 +318,14 @@ function updateSummary() {
                 task.status !== 'Completed'
         ).length
 
-    $('.overDue').find('p').remove()
+    // $('.overDue').find('p').remove()
 
-    $('.overDue').append(`
-        <p>${overdue}</p>
-    `)
+    // $('.overDue').append(`
+    //     <p class="fs-1">${overdue}</p>
+    // `)
+    $('#overdueNum').text(
+        notStarted
+    )
 }
 
 
@@ -452,17 +504,18 @@ async function editTask(id) {
 async function updateTask() {
 
     try {
-
+        console.log("Editing ID:", editingId)
         const taskData = {
             taskName: $('#EtaskNameInput').val(),
             taskDesc: $('#EtaskDescInput').val(),
             dueDate: $('#EtaskDueInput').val(),
-            priority: $('#EPriority').val(),
-            status: $('#EStatus').val(),
+            priority: $('#Epriority').val(),
+            status: $('#Estatus').val(),
             userId: loggedInUser.id,
             deleted: false,
             startDate: formattedDate
         }
+        // console.log(taskData);
 
         if (
             !taskData.taskName ||
@@ -471,8 +524,16 @@ async function updateTask() {
             taskData.priority === 'Choose Priority' ||
             taskData.status === 'Choose Status'
         ) {
+            // console.log(task);
+            
             toastr.error('Please fill all fields')
             return
+        }
+        const today = getTodayDate();
+
+        if (taskData.dueDate < today) {
+            toastr.error("Due Date cannot be before current date");
+            return;
         }
 
         await fetch(
@@ -520,7 +581,7 @@ $('#p-btns:nth-child(2)').click(() => {
 $('#p-btns:nth-child(3)').click(() => {
     renderTasks(
         allTasks.filter(
-            task => task.priority === 'Normal'
+            task => task.priority === 'Medium'
         )
     )
 })

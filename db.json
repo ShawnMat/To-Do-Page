@@ -25,145 +25,15 @@
   ],
   "tasks": [
     {
-      "taskName": "Shawn",
-      "taskDesc": "Shawn",
-      "dueDate": "2026-06-18",
-      "userId": "ugOaPjfmokw",
-      "deleted": false,
-      "startDate": "Monday, 01-06-2026, 01-06-2026",
-      "id": "7jn_x2hNs7o"
-    },
-    {
-      "taskName": "todo",
-      "taskDesc": "                h",
-      "startDate": "Monday, 01-06-2026",
-      "dueDate": "Invalid Date, NaN-NaN-NaN",
-      "priority": null,
-      "status": null,
-      "userId": "ugOaPjfmokw",
-      "deleted": false,
-      "id": "upFRdJd-Dxw"
-    },
-    {
-      "taskName": "s",
-      "taskDesc": "                ",
-      "startDate": "Monday, 01-06-2026",
-      "dueDate": "Invalid Date, NaN-NaN-NaN",
-      "priority": null,
-      "status": null,
-      "userId": "ugOaPjfmokw",
-      "deleted": false,
-      "id": "yLfoaV-NpVk"
-    },
-    {
-      "taskName": "d",
-      "taskDesc": "as",
-      "startDate": "Monday, 01-06-2026",
-      "dueDate": "2026-06-03",
-      "priority": null,
-      "status": null,
-      "userId": "ugOaPjfmokw",
-      "deleted": false,
-      "id": "821HLI9PNPo"
-    },
-    {
-      "taskName": "sd",
-      "taskDesc": "                ",
-      "startDate": "Monday, 01-06-2026",
-      "dueDate": "2026-06-03",
-      "priority": "High",
-      "status": "Not Started",
-      "userId": "ugOaPjfmokw",
-      "deleted": true,
-      "id": "D1A6oOsxKgs"
-    },
-    {
-      "taskName": "todo",
-      "taskDesc": "                ",
-      "startDate": "Monday, 01-06-2026",
-      "dueDate": "Invalid Date, NaN-NaN-NaN",
-      "priority": null,
-      "status": null,
-      "userId": "ugOaPjfmokw",
-      "deleted": true,
-      "id": "MXYNS0eH6NM"
-    },
-    {
-      "taskName": "todo",
-      "taskDesc": "                sd",
-      "startDate": "Monday, 01-06-2026",
-      "dueDate": "2026-06-05",
-      "priority": "Normal",
-      "status": "Not Started",
-      "userId": "ugOaPjfmokw",
-      "deleted": true,
-      "id": "f6Qf0WYSW9k"
-    },
-    {
       "taskName": "CRUD",
-      "taskDesc": "sample desc",
-      "startDate": "Monday, 01-06-2026",
-      "dueDate": "2026-06-07",
-      "priority": "Normal",
-      "status": "Pending",
-      "userId": "ugOaPjfmokw",
-      "deleted": true,
-      "id": "IP2gWvNT2CY"
-    },
-    {
-      "taskName": "saddsada",
-      "taskDesc": "d",
-      "startDate": "Monday, 01-06-2026",
-      "dueDate": "2026-06-18",
-      "priority": "Medium",
-      "status": "Pending",
-      "userId": "ugOaPjfmokw",
-      "deleted": true,
-      "id": "xeJDuSuPCy0"
-    },
-    {
-      "taskName": "fas",
-      "taskDesc": "asf",
-      "startDate": "Monday, 01-06-2026, 01-06-2026",
-      "dueDate": "2026-06-10",
-      "priority": "Low",
-      "status": "Not Started",
-      "userId": "ugOaPjfmokw",
-      "deleted": true,
-      "id": "EjJP2bm_Omc"
-    },
-    {
-      "taskName": "sfdasf",
-      "taskDesc": "affaf",
-      "startDate": "Monday, 01-06-2026, 01-06-2026",
-      "dueDate": "2026-06-26",
+      "taskDesc": "sample",
+      "startDate": "Tuesday, 02/06/2026",
+      "dueDate": "2026-06-06",
       "priority": "High",
-      "status": "Not Started",
-      "userId": "ugOaPjfmokw",
-      "deleted": true,
-      "id": "x_h6kvIll0Y"
-    },
-    {
-      "taskName": "Financial Records",
-      "taskDesc": "Calculate monthly Financial amounts",
-      "startDate": "Tuesday, 02-06-2026, 02-06-2026",
-      "dueDate": "2026-06-22",
-      "priority": "Low",
       "status": "Pending",
       "userId": "ugOaPjfmokw",
-      "deleted": true,
-      "id": "wFY8V_lxgP4"
-    },
-    {
-      "taskName": "sd",
-      "taskDesc": "sad                ",
-      "startDate": "Tuesday, 02-06-2026, 02-06-2026",
-      "dueDate": "2026-06-03",
-      "priority": "Low",
-      "status": "Pending",
-      "userId": "ugOaPjfmokw",
-      "deleted": true,
-      "id": "zwbRfHecCdg"
+      "deleted": false,
+      "id": "_WGgzPzj56E"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

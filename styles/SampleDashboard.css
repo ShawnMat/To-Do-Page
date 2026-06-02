@@ -4,18 +4,26 @@
     outline: 1px solid red;
 } */
 body{
-    background-color: #E5EEE4 !important;
+    background-color: #dadee1 !important;
+    color:  #333333 !important;
+    font-family: 'Playfair Display', serif !important;
+    /* background: linear-gradient(to right,#C4E2F5,#1591DC); */
 }
 .Logo{
     width: 50px ;
     height: 50px;
 }
+.navbar-header{
+    font-weight: bolder;
+    font-size: larger;
+}
 .sidebar{
-    background-color: #2A4029;
-    color: #E8E4CC;
+    
+    background-color: #d6ebf3;
+    color: #333333;
     width: 250px;
     height: 100vh;
-    border-right: 1px solid #2a5a48 ;
+    border-right: 1px solid #2F4156 ;
     display: flex;
     flex-direction: column;
 
@@ -28,45 +36,67 @@ body{
 }
 
 
-
+.menu{
+    color: #1F2937;
+}
 .navbar-header{
     width: 85vw;
     height: 75px;
-    color: #2A4029;
+    /* color: #2C5EAD; */
     /* background-color: bisque; */
-    border-bottom: 1px solid #2a5a48 ;
+    border-bottom: 1px solid #2F4156 ;
+    background-color: #d6ebf3;
 
 }
-.totaltasks{
-    /* background-color: #2a495a; */
+
+.summary{
+    background-color: #dadee1;
+}
+
+#summary-val{
+    background-color: #447f98;
+    border: 1.5px solid #2a5a48;
+    width: 15%; 
+}
+
+.summary-val p{
+    color: #2F4156 !important;
+}
+.showTasks{
+    background-color: #447f98;
+    /* background: linear-gradient(to right,#ded1c6,#a77693,#174871,#0f2d4d); */
+
+}
+/* .totaltasks{
+    background-color: #BBD5DA;
     color: #2A4029;
     border: 1.5px solid #2a5a48;
     width: 15%;
 }
 .completed{
-    /* background-color: #2a5a48; */
+    background-color: #BBD5DA;
     color: #2A4029;
     border: 1.5px solid #2a5a48;
     width: 15%;
 }
 .inprogress{
-    /* background-color: #2a5a48; */
+    background-color: #BBD5DA;
     color: #2A4029;
     border: 1.5px solid #2a5a48;
     width: 15%;
 }
 .notStarted{
-    /* background-color: #2a5a48; */
+    background-color: #BBD5DA;
     color: #2A4029;
     border: 1.5px solid #2a5a48;
     width: 15%;
 }
 .overDue{
-    /* background-color: #2a5a48; */
+    background-color: #BBD5DA;
     color: #2A4029;
     border: 1.5px solid #2a5a48;
     width: 15%;
-}
+} */
 /* .totaltasks{
     background-color: #2a5a48;
     width: 15%;
@@ -80,10 +110,11 @@ body{
     padding: 10px;
     align-items: center;
     flex-direction: column;
-    color: #2A4029;
+    /* color: #2A4029; */
+    
  }
  .showTasks{
-    color: #2A4029;
+    /* color: #2A4029; */
     border: 1.5px solid #2a5a48;
     margin: 33px;
  }
@@ -92,7 +123,7 @@ body{
     width: 270px;
  }
  #p-btns{
-    color: #2A4029;
+    /* color: #2A4029; */
     border-radius: 5px;
     border: none;
  }
@@ -103,14 +134,16 @@ body{
 }
 
 .taskList{
-    height: 375px;
+    height: 300px;
     overflow: auto;
     
 }
-.menu-text{
+/* .menu-text{
     color: #2A4029 !important;
-}
-
+} */
+/* #userNameVal{
+    color: #2a5a48 !important;
+} */
 
 .main-content{
     display: grid;
@@ -124,3 +157,16 @@ body{
     align-items: center;
     gap: 20px;
 }
+.taskDueInputError{
+    color: red;
+    font-size: 14px;
+    display: block;
+    margin-top: 4px;
+}
+
+.sidebar-item.active {
+    background-color: #BBD5DA;
+    color: #000;
+    font-weight: 600;
+    border-left: 4px solid #FF0000;
+}   

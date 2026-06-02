@@ -17,14 +17,14 @@
             <div class="sideOne">
                 <div class="Main-logo d-flex p-4 ">
                     <img src="/icons/To Doist Logo.png" class="Logo">
-                    <h5 class="d-flex align-items-center px-3">To Doist</h5>
+                    <h5 class="d-flex fw-bold align-items-center px-3" style="color: #1F2937;">To Doist</h5>
                 </div>
                 <div class="menu ps-4">
-                    <p>Menu</p>
+                    <p class="fw-bold" >Menu</p>
                     <button class="btn menu-text d-flex gap-2" type="button">
                         <i class="bi bi-grid"></i>
                         <p class="menu-text"> Dashboard</p>
-                    </button>
+                    </button>   
                     <button class="btn Mytask-text d-flex gap-2" type="button">
                         <i class="bi bi-check2-square"></i>
                         <p class="menu-text">My Tasks</p>
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="sideTwo ps-4">
-                <p class="menu-text">Profile</p>
+                <p class="menu-text fw-bold">Profile</p>
                 <button class="btn profile d-flex gap-2" type="button">
                     <i class="bi bi-person-square"></i>
                     <p id="userNameVal"></p>
@@ -72,44 +72,45 @@
                 </div>
             </div>
             <div class="summary d-flex justify-content-around mt-4">
-                <button class="totaltasks rounded-1" id="summary-val">
-                    <div class="totaltasks-cont">
+                <div class="totaltasks rounded-1" id="summary-val">
+                    <div class="totaltasks-cont d-flex gap-2">
                         <i class="bi bi-list"></i>
-                        Total
+                        <p class="fw-bold" style="color: #2F4156;">Total</p>
                     </div>
-                    <p id="totalNumber"></p>
-                </button>
-                <button class="completed rounded-1" id="summary-val">
-                    <div class="completed-cont">
+                    <p class="fs-1" id="totalNumber"></p>
+                </div>
+                <div class="completed rounded-1" id="summary-val">
+                    <div class="completed-cont d-flex gap-2">
                         <i class="bi bi-check2-square"></i>
-                        Completed
+                        <p class="fw-bold">Completed</p>
                     </div>
-                    <p id="completedNum"></p> 
-                </button>
-                <button class="inprogress rounded-1" id="summary-val">
-                    <div class="inprogress-cont">
+                    <p class="fs-1" id="completedNum"></p> 
+                </div>
+                <div class="inprogress rounded-1 " id="summary-val">
+                    <div class="inprogress-cont  d-flex gap-2">
                         <i class="bi bi-hourglass-split"></i>
-                        InProgress
+                        <p class="fw-bold">InProgress</p>
                     </div>
-                    <p id=""></p>
-                </button>
-                <button class="notStarted rounded-1" id="summary-val">
-                    <div class="notStarted-cont">
-                        <i class="bi bi-hourglass-split"></i>
-                        Not Started
+                    <p class="fs-1" id="inprogressNum"></p>
+                </div>
+                <div class="notStarted rounded-1" id="summary-val">
+                    <div class="notStarted-cont d-flex gap-2 ">
+                        <i class="bi bi-pause-circle"></i>
+                        <p class="fw-bold">Not Started</p>
                     </div>
-                    <p id="notStarted"></p>
-                </button>
-                <button class="overDue rounded-1 " id="summary-val">
-                    <div class="overDue-cont">
-                        <i class="bi bi-clock-history"></i>
-                        OverDue
+                    <p class="fs-1" id="notStartedNum"></p>
+                </div>
+                <div class="overDue rounded-1 " id="summary-val">
+                    <div class="overDue-cont d-flex gap-2">
+                        <i class="bi bi-clock-history "></i>
+                        <p class="fw-bold">OverDue</p>
                     </div>
-                </button>
+                    <p class="fs-1" id="overdueNum"></p>
+                </div>
             </div>
             <div class="showTasks rounded-1 p-3">
                 <div class="heading d-flex justify-content-between">
-                    <p>My Tasks</p>
+                    <p class="fw-bold fs-5">My Tasks</p>
                     <div class="priority-filters d-flex">
                         <div class="priority-border d-flex align-items-center justify-content-center rounded-1">
                             <div class="priority-btns">
@@ -146,24 +147,19 @@
         </div>
     </div>
 </div>
+
     <div class="modal fade" id="addTaskModal"> 
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5>Add Task</h5>
+                    <h5 class="fw-bold">Add Task</h5>
                     <button class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                        <input
-                    class="form-control mb-2"
-                    id="taskNameInput"
-                    placeholder="Task Name">
-
-                <textarea
-                    class="form-control mb-2"
-                    id="taskDescInput"
-                    placeholder="Description">
-                </textarea>
+                    <input class="form-control mb-2" id="taskNameInput" placeholder="Task Name">
+                    <p class="taskNameError"></p>
+                    <textarea class="form-control mb-2" id="taskDescInput" placeholder="Description"></textarea>
+                    <p class="textAreaError"></p>
 
                 <!-- <input
                     class="form-control mb-2"
@@ -172,16 +168,10 @@
                     onfocus="this.type='date'"
                     onblur="if(!this.value)this.type='text'"> -->
 
-                <input
-                    class="form-control mb-2"
-                    id="taskDueInput"
-                    placeholder="Due Date"
-                    onfocus="this.type='date'"
-                    onblur="if(!this.value)this.type='text'">
-
-                <select
-                    class="form-select mb-2"
-                    id="priority">
+                <input class="form-control mb-2" id="taskDueInput" placeholder="Due Date" onfocus="this.type='date'" onblur="if(!this.value)this.type='text'">
+                <p class="taskDueInputError"></p>
+                <select class="form-select mb-2" id="priority">
+                
 
                     <option disabled selected>
                         Choose Priority
@@ -193,10 +183,8 @@
                     <option>Low</option>
 
                 </select>
-
-                <select
-                    class="form-select mb-2"
-                    id="status">
+                <p class="priorityError"></p>
+                <select class="form-select mb-2" id="status">
 
                     <option disabled selected>
                         Choose Status
@@ -207,13 +195,9 @@
                     <option>Completed</option>
 
                 </select>
-
-                <button
-                    class="btn btn-primary w-100"
-                    id="addTaskBtn" >
-                
+                <p class="statusError"></p>
+                <button class="btn btn-primary w-100" id="addTaskBtn" >
                     Submit
-
                 </button>
                 </div>
             </div>
@@ -224,7 +208,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5>Edit Task</h5>
+                    <h5 class="fw-bold">Edit Task</h5>
                     <button class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
