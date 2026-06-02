@@ -4,7 +4,7 @@
     outline: 1px solid red;
 } */
 body{
-    background-color: #dadee1 !important;
+    /* background-color: #dadee1 !important; */
     color:  #333333 !important;
     font-family: 'Playfair Display', serif !important;
     /* background: linear-gradient(to right,#C4E2F5,#1591DC); */
@@ -19,7 +19,7 @@ body{
 }
 .sidebar{
     
-    background-color: #d6ebf3;
+    /* background-color: #d6ebf3; */
     color: #333333;
     width: 250px;
     height: 100vh;
@@ -45,16 +45,16 @@ body{
     /* color: #2C5EAD; */
     /* background-color: bisque; */
     border-bottom: 1px solid #2F4156 ;
-    background-color: #d6ebf3;
+    /* background-color: #d6ebf3; */
 
 }
 
 .summary{
-    background-color: #dadee1;
+    /* background-color: #dadee1; */
 }
 
 #summary-val{
-    background-color: #447f98;
+    /* background-color: #447f98; */
     border: 1.5px solid #2a5a48;
     width: 15%; 
 }
@@ -63,7 +63,7 @@ body{
     color: #2F4156 !important;
 }
 .showTasks{
-    background-color: #447f98;
+    /* background-color: #447f98; */
     /* background: linear-gradient(to right,#ded1c6,#a77693,#174871,#0f2d4d); */
 
 }
