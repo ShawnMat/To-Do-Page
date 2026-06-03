@@ -284,17 +284,6 @@ function renderTasks(tasks) {
     </div>
 
         `)
-        // $('#deleteBtn').click(()=>{
-        //     Swal.fire({
-        //         icon: 'Confirm',
-        //         title: 'Are You Sure to Delete Task?',
-        //         showConfirmButton: true,
-        //     }).then((result)=>{
-        //         if(result.isConfirmed){
-        //             deleteTask(task.id)
-        //         }
-        //     })
-        // }) 
     })
     // console.log(tasks)
 }
@@ -423,11 +412,6 @@ function updateSummary() {
                 task.status !== 'Completed'
         ).length
 
-    // $('.overDue').find('p').remove()
-
-    // $('.overDue').append(`
-    //     <p class="fs-1">${overdue}</p>
-    // `)
     $('#overdueNum').text(
         overdue
     )
@@ -697,22 +681,6 @@ $('.notStarted').click(()=>{
     ))
 })
 
-// function convertToInputDate(dateString) {
-//     const datePart = dateString.split(", ")[1];
-//     const [dd, mm, yyyy] = datePart.split("/");
-
-//     return `${yyyy}-${mm}-${dd}`;
-// }
-
-// console.log(
-//     convertToInputDate("Tuesday, 02/06/2026")
-// );
-
-// $('.overDue').click(()=>{
-//     renderTasks(allTasks.filter(
-//         task => task.dueDate < today
-//     ))
-// })
 
 $('.overDue').click(() => {
 
@@ -783,23 +751,7 @@ function clearInputs() {
     )
 }
 
-// let calendarInitialized = false;
-// $('#calendarBtn').click(() => {
 
-//     $('.showTasks').html(`
-//         <div id="calendar"></div>
-//     `);
-
-//     const calendar =
-//         new FullCalendar.Calendar(
-//             document.getElementById('calendar'),
-//             {
-//                 initialView: 'dayGridMonth'
-//             }
-//         );
-
-//     calendar.render();
-// });
 $('#applyDateFilter').click(() => {
 
     const startDate =

@@ -27,9 +27,7 @@ body{
     width: 100vw;
     background-color: #F2FAF7;
 }
-.content-cont{
-    
-}
+
 
 .menu{
     color: #04342C;
@@ -43,10 +41,6 @@ body{
 .filterByDate{
     width: 150px;
 }
-.summary{
-
-}
-
 #summary-val{
     border: 1.5px solid #1D9E75;
     width: 15%; 

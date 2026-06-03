@@ -8,18 +8,8 @@
 
 body{
     font-family:'Poppins',sans-serif;
-
-    /* background:linear-gradient(
-        90deg,
-        #F6F4E8 0%,
-        #E5EEE4 100%
-    ); */
-    /* background-color: #9FE1CB !important; */
     background-color: #F2FAF7 !important;
 
-    /* background: linear-gradient(
-    220deg,#E1F5EE 0%, #9FE1CB  100%
-    ) !important; */
 }
 .error {
     color: red;
@@ -28,16 +18,10 @@ body{
     margin-top: 4px;
 }
 
-/* .signup-cont{
-    background: linear-gradient(
-    180deg,#E1F5EE 0%, #9FE1CB  100%
-    ) !important;
-} */
+
 .signup-card{
-    /* margin-top: 100px !important; */
-    /* border: 10px solid #9FE1CB !important; */
+
     width:650px;
-    /* height: 700px  !important; */
     border:none !important;
     border-radius:24px !important;
 
