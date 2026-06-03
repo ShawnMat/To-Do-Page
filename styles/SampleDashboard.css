@@ -1,13 +1,9 @@
-
-
 /* *{
     outline: 1px solid red;
 } */
 body{
-    /* background-color: #dadee1 !important; */
-    color:  #333333 !important;
+    color: #0F6E56 !important;
     font-family: 'Playfair Display', serif !important;
-    /* background: linear-gradient(to right,#C4E2F5,#1591DC); */
 }
 .Logo{
     width: 50px ;
@@ -18,97 +14,51 @@ body{
     font-size: larger;
 }
 .sidebar{
-    
-    background-color: #e5eee4;
-    color: #333333;
+    background-color: #E1F5EE;
+    color: #0F6E56;
     width: 250px;
     height: 100vh;
-    border-right: 1px solid #2F4156 ;
+    border-right: 1px solid #1D9E75;
     display: flex;
     flex-direction: column;
-
-    /* justify-content: space-evenly; */
 }
 
 .workspace{
     width: 100vw;
-    background-color: #f6f4f8;
-    /* color: #E8E4CC; */
-    /* background-color: #333333; */
+    background-color: #F2FAF7;
 }
 .content-cont{
     
-    /* background:linear-gradient(135deg,#C0e1d2 0%,#e5eee4 20%,#f6f4f8 100%) */
 }
 
 .menu{
-    color: #1F2937;
+    color: #04342C;
 }
 .navbar-header{
     width: 85vw;
     height: 75px;
-    /* color: #2C5EAD; */
-    /* background-color: bisque; */
-    border-bottom: 1px solid #2F4156 ;
-    background-color: #e5eee4;
-
+    border-bottom: 1px solid #1D9E75;
+    background-color: #E1F5EE;
 }
 .filterByDate{
     width: 150px;
 }
 .summary{
-    /* background-color: #dadee1; */
+
 }
 
 #summary-val{
-    /* background-color: #447f98; */
-    border: 1.5px solid #2a5a48;
+    border: 1.5px solid #1D9E75;
     width: 15%; 
 }
 
 .summary-val p{
-    color: #ffffff !important;
-    
+    color: #04342C !important;
 }
 .showTasks{
-    background-color: #7ab8a2;
-    /* background: linear-gradient(to right,#ded1c6,#a77693,#174871,#0f2d4d); */
+    background-color: #9FE1CB;
+}
 
-}
-/* .totaltasks{
-    background-color: #BBD5DA;
-    color: #2A4029;
-    border: 1.5px solid #2a5a48;
-    width: 15%;
-}
-.completed{
-    background-color: #BBD5DA;
-    color: #2A4029;
-    border: 1.5px solid #2a5a48;
-    width: 15%;
-}
-.inprogress{
-    background-color: #BBD5DA;
-    color: #2A4029;
-    border: 1.5px solid #2a5a48;
-    width: 15%;
-}
-.notStarted{
-    background-color: #BBD5DA;
-    color: #2A4029;
-    border: 1.5px solid #2a5a48;
-    width: 15%;
-}
-.overDue{
-    background-color: #BBD5DA;
-    color: #2A4029;
-    border: 1.5px solid #2a5a48;
-    width: 15%;
-} */
-/* .totaltasks{
-    background-color: #2a5a48;
-    width: 15%;
-} */
  #summary-val{
     display: flex;
     gap:10px;
@@ -118,8 +68,6 @@ body{
     padding: 10px;
     align-items: center;
     flex-direction: column;
-    /* color: #2A4029; */
-    
  }
 
  .searchDate{
@@ -127,36 +75,31 @@ body{
     padding: 5px;
  }
  .showTasks{
-    /* color: #2A4029; */
-    border: 1.5px solid #2a5a48;
-    margin: 33px;
+    border: 1.5px solid #1D9E75;
+    /* margin: 30px; */
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    /* margin-bottom: 25px; */
  }
  .priority-border{
-    background-color: rgb(212, 214, 215);
+    background-color: #E1F5EE;
     width: 270px;
  }
  #p-btns{
-    /* color: #2A4029; */
     border-radius: 5px;
     border: none;
  }
 #showBorder{
     margin: 10px;
     width: 100%;
-    border: 1px solid #2a5a48;
+    border: 1px solid #1D9E75;
 }
 
 .taskList{
     height: 300px;
     overflow: auto;
-    
 }
-/* .menu-text{
-    color: #2A4029 !important;
-} */
-/* #userNameVal{
-    color: #2a5a48 !important;
-} */
 
 .main-content{
     display: grid;
@@ -178,8 +121,8 @@ body{
 }
 
 .sidebar-item.active {
-    background-color: #BBD5DA;
-    color: #000;
+    background-color: #9FE1CB;
+    color: #04342C;
     font-weight: 600;
-    border-left: 4px solid #FF0000;
-}   
+    border-left: 4px solid #1D9E75;
+}

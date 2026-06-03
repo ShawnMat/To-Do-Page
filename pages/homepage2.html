@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HomePage</title>
+
+  <link rel="stylesheet" href="/styles/homepage2.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg fs-4 fw-bold">
+  <div class="container-fluid">
+    <img src="/icons/To Doist Logo.png" class="Logo">
+    <a class="navbar-brand px-3" href="#">ToDoist</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNavAltMarkup">
+      <div class="navbar-nav gap-3">
+        <a class="nav-link active" aria-current="page" href="#about">About</a>
+        <a class="nav-link" href="#features">Features</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <div class="registration_btns d-flex gap-3 align-items-center px-3">
+      <button id="themeToggle" title="Toggle dark/light mode">🌙</button>
+      <a href="/pages/login.html" class="loginBtn text-decoration-none">Login</a>
+      <a href="/pages/signup.html" class="signupBtn text-decoration-none">Sign Up</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container hero-page text-center">
+  <div class="mainText d-flex align-items-center">
+    <div class="HeroText">
+      <p class="Hero-text fs-1 fw-bold fst-italic">
+        Increase your productivity with ToDoist
+      </p>
+      <p>
+        Organize tasks, set priorities, and track your progress in one place. ToDoist makes it simple to manage your daily activities and achieve your goals efficiently.
+      </p>
+    </div>
+    <div class="todo-animation">
+      <div class="todo-card">
+        <h2>TO DO</h2>
+        <div class="task completed">Buy groceries</div>
+        <div class="task completed">Study SQL</div>
+        <div class="task completed">Complete project</div>
+        <div class="task completed">Workout</div>
+        <div class="task pending">Plan tomorrow</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="about" class="container py-5">
+  <h2 class="text-center mb-4">About Us</h2>
+  <p class="text-center fs-5">
+    ToDoist is a simple and powerful task management platform designed to
+    help individuals stay organized, focused, and productive. Whether
+    you're managing personal goals, academic assignments, or professional
+    projects, our dashboard provides an easy way to track and complete
+    tasks efficiently.
+  </p>
+  <p class="text-center fs-5">
+    Our mission is to help users reduce stress, improve time management,
+    and achieve their goals by providing a clean and intuitive productivity
+    experience.
+  </p>
+</section>
+
+<section id="features" class="container py-5">
+  <h2 class="text-center mb-5">Features</h2>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body text-center">
+          <h4>Create Tasks</h4>
+          <p>Easily add and organize tasks with clear titles and descriptions.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body text-center">
+          <h4>Priority Management</h4>
+          <p>Mark tasks as High, Medium, or Low priority to focus on what matters most.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body text-center">
+          <h4>Track Progress</h4>
+          <p>Monitor completed and pending tasks with a clear overview of your productivity.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body text-center">
+          <h4>Due Dates</h4>
+          <p>Set deadlines and stay on schedule with timely task management.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body text-center">
+          <h4>User Dashboard</h4>
+          <p>Access all your tasks, priorities, and progress from one centralized dashboard.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body text-center">
+          <h4>Simple & Fast</h4>
+          <p>Enjoy a clean, user-friendly interface built for speed and efficiency.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="container py-5">
+  <h2 class="text-center mb-4">Contact Us</h2>
+  <div class="text-center fs-5">
+    <p>Have questions, feedback, or suggestions? We'd love to hear from you.</p>
+    <p>📧 Email: support@todoist.com</p>
+    <p>📞 Phone: +91 98765 43210</p>
+    <p>📍 Location: Coimbatore, Tamil Nadu, India</p>
+    <p>Our team is committed to improving your productivity experience and will respond as soon as possible.</p>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+
+  // Load saved preference
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    root.setAttribute('data-theme', saved);
+    toggle.textContent = saved === 'dark' ? '☀️' : '🌙';
+  }
+
+  toggle.addEventListener('click', () => {
+    const current = root.getAttribute('data-theme');
+    if (current === 'dark') {
+      root.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+      toggle.textContent = '🌙';
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      toggle.textContent = '☀️';
+    }
+  });
+</script>
+
+</body>
+</html>

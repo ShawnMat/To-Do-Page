@@ -5,13 +5,7 @@
 } */
 
 body{
-/* background: linear-gradient(90deg, #F6F4E8 0%, #E5EEE4 100%); */
-/* background-color: #F6F4E8 !important; */
-    background:linear-gradient(
-        90deg,
-        #E5EEE4 0%,
-        #F6F4E8 100%
-    ) !important;
+    background-color: #F2FAF7 !important;
     font-family: 'Playfair Display', serif !important;
 }
 
@@ -28,9 +22,11 @@ body{
     border-radius: 50%;
 }
 .navbar{
-/* background: linear-gradient(90deg, #F6F4E8 0%, #E5EEE4 100%); */
-background-color: #C0E1D2 !important;
+    color: #0F6E56;
+    border-bottom: 1px solid #9FE1CB!important;
+    background-color: #F2FAF7 !important;
 
+    
 }
 .todo-animation{
     margin-top: 75px;
@@ -39,12 +35,46 @@ background-color: #C0E1D2 !important;
     align-items:center;
     min-width:500px;
 }
+
+.todo-card{
+    background: linear-gradient(
+    180deg,#E1F5EE 0%, #9FE1CB  100%
+    ) !important;
+}
 .hero-card{
+    /* background: linear-gradient(
+    180deg,#E1F5EE 0%, #9FE1CB  100%
+    ); */
     height: 100vh;
 }
 #about{
     height: 100vh;
 }
+/* abut section */
+#about {
+    background: #9FE1CB;
+    border-radius: 20px;
+    padding: 80px 40px;
+}
+
+#about .card {
+    transition: all .3s ease;
+    border-radius: 16px;
+}
+
+#about .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.1) !important;
+}
+
+#about h2 {
+    color: #1e293b;
+}
+
+#about h3 {
+    color: #0f172a;
+}
+/* about section end */
 #features{
     height: 100vh;
 }
@@ -173,4 +203,39 @@ background-color: #C0E1D2 !important;
     50%{
         transform:translateY(-12px);
     }
+}
+
+#contact{
+    height: 100vh;
+    background-color: #9FE1CB ;
+    border-radius: 20px;
+}
+
+#contact-cont {
+    background: #f8fafc;
+    border-radius: 20px;
+    padding: 80px 40px;
+    
+}
+
+.contact-card {
+    background: #fff;
+    border-radius: 18px;
+    transition: all .3s ease;
+    height: 100%;
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.1) !important;
+}
+
+.contact-message {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+#contact-cont h2 {
+    color: #1e293b;
 }

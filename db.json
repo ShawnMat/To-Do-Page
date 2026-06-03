@@ -100,6 +100,17 @@
       "userId": "ugOaPjfmokw",
       "deleted": false,
       "id": "BqJhIYn5RBg"
+    },
+    {
+      "taskName": "Shawn",
+      "taskDesc": "Mathew",
+      "startDate": "Wednesday, 03/06/2026",
+      "dueDate": "2026-06-10",
+      "priority": "High",
+      "status": "Pending",
+      "userId": "ugOaPjfmokw",
+      "deleted": true,
+      "id": "EVBYWfaI7x8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
